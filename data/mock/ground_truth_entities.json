@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Rahul Sharma",
+    "phone": "9876543210",
+    "vehicle": "MP09AB1234"
+  },
+  {
+    "name": "Vikram Singh",
+    "phone": "9123456780",
+    "vehicle": "MP09XY5678"
+  },
+  {
+    "name": "Amit Verma",
+    "phone": "9988776655",
+    "vehicle": "MP04CD9012"
+  },
+  {
+    "name": "Suresh Yadav",
+    "phone": "9871234560",
+    "vehicle": null
+  },
+  {
+    "name": "Deepak Rao",
+    "phone": "9012345678",
+    "vehicle": "MP09EF3456"
+  },
+  {
+    "name": "Manoj Tiwari",
+    "phone": "9765432109",
+    "vehicle": null
+  },
+  {
+    "name": "Ravi Kumar",
+    "phone": "9345678901",
+    "vehicle": "MP04GH7890"
+  },
+  {
+    "name": "Sanjay Mehta",
+    "phone": "9456789012",
+    "vehicle": null
+  }
+]

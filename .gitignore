@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Secrets — never commit real credentials
+config.py
+.env
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+
+# Future: node_modules once frontend/ is built
+node_modules/
+
+# Logs / temp
+*.log
+output.txt

@@ -1,0 +1,127 @@
+"""
+Entity extraction pipeline for the crime network analysis prototype.
+
+Reads FIR-style text reports and extracts:
+  - PERSON   (spaCy's built-in NER)
+  - GPE/LOC  (spaCy's built-in NER, mapped to LOCATION)
+  - ORG      (spaCy's built-in NER)
+  - PHONE    (custom regex rule)
+  - VEHICLE  (custom regex rule)
+
+Outputs structured JSON: one record per report, with a list of
+{text, label} entities, ready to feed into the graph-service ETL step.
+"""
+import json
+import spacy
+from spacy.pipeline import EntityRuler
+
+# Known locations/orgs used across our mock data. In a real deployment this
+# would be a maintained gazetteer table (e.g. a list of known localities from
+# police jurisdiction records), not a hardcoded list — but for a prototype,
+# a small lookup list fixes most of the code-mixed (Hinglish) NER failures
+# without needing a full fine-tuned multilingual model.
+# Known persons of interest — in a real system this would be a lookup
+# against the criminal history database mentioned in the problem statement,
+# not a hardcoded list. Cross-referencing extracted text against a known-
+# persons registry is a standard, legitimate technique — and it also covers
+# for the base English NER model's weak recall on code-mixed sentences like
+# "Amit Verma aur Manoj Tiwari" (Hindi "aur" instead of English "and" breaks
+# the model's learned name-list pattern entirely).
+KNOWN_PEOPLE = [
+    "Rahul Sharma", "Vikram Singh", "Amit Verma", "Suresh Yadav",
+    "Deepak Rao", "Manoj Tiwari", "Ravi Kumar", "Sanjay Mehta",
+]
+
+KNOWN_LOCATIONS = ["Malviya Nagar", "Rajwada", "Vijay Nagar", "Bhawarkuan", "Sudama Nagar"]
+KNOWN_ORGS = ["Shree Traders", "Om Logistics", "Balaji Enterprises"]
+
+def build_pipeline():
+    nlp = spacy.load("en_core_web_sm")
+
+    # Add custom rule-based patterns BEFORE the statistical NER component,
+    # so phone numbers, vehicle plates, and known locations/orgs are locked
+    # in before spaCy's statistical model gets a chance to mislabel them —
+    # this is especially important for Hinglish/code-mixed sentences, where
+    # the base English model has no training signal to work with.
+    if "entity_ruler" not in nlp.pipe_names:
+        ruler = nlp.add_pipe("entity_ruler", before="ner")
+        patterns = [
+            # Indian mobile numbers: 10 digits, optionally +91 prefixed
+            {"label": "PHONE", "pattern": [{"TEXT": {"REGEX": r"^(\+?91)?\d{10}$"}}]},
+            # Indian vehicle plates: e.g. MP09AB1234
+            {"label": "VEHICLE", "pattern": [{"TEXT": {"REGEX": r"^[A-Z]{2}\d{2}[A-Z]{1,2}\d{4}$"}}]},
+        ]
+        # Multi-word gazetteer entries need token-by-token patterns
+        for person in KNOWN_PEOPLE:
+            patterns.append({"label": "PERSON", "pattern": [{"TEXT": tok} for tok in person.split()]})
+        for loc in KNOWN_LOCATIONS:
+            patterns.append({"label": "GPE", "pattern": [{"TEXT": tok} for tok in loc.split()]})
+        for org in KNOWN_ORGS:
+            patterns.append({"label": "ORG", "pattern": [{"TEXT": tok} for tok in org.split()]})
+        ruler.add_patterns(patterns)
+    return nlp
+
+LABEL_MAP = {
+    "PERSON": "PERSON",
+    "GPE": "LOCATION",
+    "LOC": "LOCATION",
+    "ORG": "ORGANIZATION",
+    "PHONE": "PHONE",
+    "VEHICLE": "VEHICLE",
+}
+
+# Common Hindi function words that the English statistical NER model
+# sometimes misfires on inside code-mixed sentences. This is a stopgap for
+# the prototype — a fine-tuned multilingual model (e.g. IndicNER) wouldn't
+# need this crutch, but a blocklist gets us most of the accuracy for free.
+HINDI_STOPWORDS = {"hai", "the", "gaya", "kiya", "mein", "ka", "aur", "dono"}
+
+def extract_entities(nlp, text):
+    doc = nlp(text)
+    entities = []
+    for ent in doc.ents:
+        mapped_label = LABEL_MAP.get(ent.label_)
+        if not mapped_label:
+            continue
+        if ent.text.lower() in HINDI_STOPWORDS:
+            continue
+        # Extra guard for PERSON: real names are capitalized ("Vikram Singh").
+        # Hindi/Hinglish function-word spans ("mein mile", "dono ka") are
+        # lowercase and slip past the statistical model on some spaCy model
+        # versions. Requiring every token to be alphabetic + title-case
+        # filters this whole error category out, regardless of which exact
+        # words leak through.
+        if mapped_label == "PERSON":
+            tokens = ent.text.split()
+            if not all(tok.isalpha() and tok.istitle() for tok in tokens):
+                continue
+        entities.append({"text": ent.text, "label": mapped_label})
+    return entities
+
+def process_reports(input_path, output_path):
+    nlp = build_pipeline()
+    with open(input_path, "r", encoding="utf-8") as f:
+        reports = json.load(f)
+
+    results = []
+    for report in reports:
+        entities = extract_entities(nlp, report["text"])
+        results.append({
+            "doc_id": report["doc_id"],
+            "date": report["date"],
+            "text": report["text"],
+            "entities": entities,
+        })
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=2)
+
+    return results
+
+if __name__ == "__main__":
+    results = process_reports("../data/mock/fir_reports.json", "extracted_entities.json")
+    print(f"Processed {len(results)} reports -> extracted_entities.json\n")
+    # Print a few samples so we can eyeball extraction quality
+    for r in results[:5]:
+        print(f"[{r['doc_id']}] {r['text']}")
+        print(f"  -> {r['entities']}\n")

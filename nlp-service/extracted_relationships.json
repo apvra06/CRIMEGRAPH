@@ -1,0 +1,542 @@
+[
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Rahul Sharma",
+    "target_type": "PERSON",
+    "type": "ASSOCIATED_WITH",
+    "source_document": "FIR-1000",
+    "date": "2026-07-01 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Vijay Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1000",
+    "date": "2026-07-01 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "Vijay Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1000",
+    "date": "2026-07-01 00:00:00"
+  },
+  {
+    "source": "Amit Verma",
+    "source_type": "PERSON",
+    "target": "Manoj Tiwari",
+    "target_type": "PERSON",
+    "type": "ASSOCIATED_WITH",
+    "source_document": "FIR-1001",
+    "date": "2026-07-02 00:00:00"
+  },
+  {
+    "source": "Amit Verma",
+    "source_type": "PERSON",
+    "target": "Malviya Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1001",
+    "date": "2026-07-02 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "Malviya Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1001",
+    "date": "2026-07-02 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Bhawarkuan",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1002",
+    "date": "2026-07-03 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "MP09XY5678",
+    "target_type": "VEHICLE",
+    "type": "OWNS_VEHICLE",
+    "source_document": "FIR-1002",
+    "date": "2026-07-03 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "9123456780",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1002",
+    "date": "2026-07-03 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Sanjay Mehta",
+    "target_type": "PERSON",
+    "type": "ASSOCIATED_WITH",
+    "source_document": "FIR-1003",
+    "date": "2026-07-04 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1003",
+    "date": "2026-07-04 00:00:00"
+  },
+  {
+    "source": "Sanjay Mehta",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1003",
+    "date": "2026-07-04 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "Deepak Rao",
+    "target_type": "PERSON",
+    "type": "ASSOCIATED_WITH",
+    "source_document": "FIR-1004",
+    "date": "2026-07-05 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1004",
+    "date": "2026-07-05 00:00:00"
+  },
+  {
+    "source": "Deepak Rao",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1004",
+    "date": "2026-07-05 00:00:00"
+  },
+  {
+    "source": "Ravi Kumar",
+    "source_type": "PERSON",
+    "target": "Balaji Enterprises",
+    "target_type": "ORGANIZATION",
+    "type": "MEMBER_OF",
+    "source_document": "FIR-1005",
+    "date": "2026-07-06 00:00:00"
+  },
+  {
+    "source": "Ravi Kumar",
+    "source_type": "PERSON",
+    "target": "Bhawarkuan",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1005",
+    "date": "2026-07-06 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "9345678901",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1006",
+    "date": "2026-07-07 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1006",
+    "date": "2026-07-07 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "Shree Traders",
+    "target_type": "ORGANIZATION",
+    "type": "MEMBER_OF",
+    "source_document": "FIR-1007",
+    "date": "2026-07-08 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1007",
+    "date": "2026-07-08 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Shree Traders",
+    "target_type": "ORGANIZATION",
+    "type": "MEMBER_OF",
+    "source_document": "FIR-1008",
+    "date": "2026-07-09 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Bhawarkuan",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1008",
+    "date": "2026-07-09 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "9012345678",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1009",
+    "date": "2026-07-10 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "Vijay Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1009",
+    "date": "2026-07-10 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Balaji Enterprises",
+    "target_type": "ORGANIZATION",
+    "type": "MEMBER_OF",
+    "source_document": "FIR-1010",
+    "date": "2026-07-11 00:00:00"
+  },
+  {
+    "source": "Vikram Singh",
+    "source_type": "PERSON",
+    "target": "Malviya Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1010",
+    "date": "2026-07-11 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1011",
+    "date": "2026-07-12 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "9765432109",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1011",
+    "date": "2026-07-12 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1012",
+    "date": "2026-07-13 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "MP09AB1234",
+    "target_type": "VEHICLE",
+    "type": "OWNS_VEHICLE",
+    "source_document": "FIR-1012",
+    "date": "2026-07-13 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "9876543210",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1012",
+    "date": "2026-07-13 00:00:00"
+  },
+  {
+    "source": "Suresh Yadav",
+    "source_type": "PERSON",
+    "target": "Om Logistics",
+    "target_type": "ORGANIZATION",
+    "type": "MEMBER_OF",
+    "source_document": "FIR-1013",
+    "date": "2026-07-14 00:00:00"
+  },
+  {
+    "source": "Suresh Yadav",
+    "source_type": "PERSON",
+    "target": "Malviya Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1013",
+    "date": "2026-07-14 00:00:00"
+  },
+  {
+    "source": "Sanjay Mehta",
+    "source_type": "PERSON",
+    "target": "Shree Traders",
+    "target_type": "ORGANIZATION",
+    "type": "MEMBER_OF",
+    "source_document": "FIR-1014",
+    "date": "2026-07-15 00:00:00"
+  },
+  {
+    "source": "Sanjay Mehta",
+    "source_type": "PERSON",
+    "target": "Vijay Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1014",
+    "date": "2026-07-15 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "Vijay Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1015",
+    "date": "2026-07-16 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "9765432109",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1015",
+    "date": "2026-07-16 00:00:00"
+  },
+  {
+    "source": "Amit Verma",
+    "source_type": "PERSON",
+    "target": "9012345678",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1016",
+    "date": "2026-07-17 00:00:00"
+  },
+  {
+    "source": "Amit Verma",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1016",
+    "date": "2026-07-17 00:00:00"
+  },
+  {
+    "source": "Ravi Kumar",
+    "source_type": "PERSON",
+    "target": "Shree Traders",
+    "target_type": "ORGANIZATION",
+    "type": "MEMBER_OF",
+    "source_document": "FIR-1017",
+    "date": "2026-07-18 00:00:00"
+  },
+  {
+    "source": "Ravi Kumar",
+    "source_type": "PERSON",
+    "target": "Sudama Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1017",
+    "date": "2026-07-18 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "9123456780",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1018",
+    "date": "2026-07-19 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "Malviya Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1018",
+    "date": "2026-07-19 00:00:00"
+  },
+  {
+    "source": "Deepak Rao",
+    "source_type": "PERSON",
+    "target": "Balaji Enterprises",
+    "target_type": "ORGANIZATION",
+    "type": "MEMBER_OF",
+    "source_document": "FIR-1019",
+    "date": "2026-07-20 00:00:00"
+  },
+  {
+    "source": "Deepak Rao",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1019",
+    "date": "2026-07-20 00:00:00"
+  },
+  {
+    "source": "Suresh Yadav",
+    "source_type": "PERSON",
+    "target": "9765432109",
+    "target_type": "PHONE",
+    "type": "HAS_PHONE",
+    "source_document": "FIR-1020",
+    "date": "2026-07-21 00:00:00"
+  },
+  {
+    "source": "Suresh Yadav",
+    "source_type": "PERSON",
+    "target": "Bhawarkuan",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1020",
+    "date": "2026-07-21 00:00:00"
+  },
+  {
+    "source": "Amit Verma",
+    "source_type": "PERSON",
+    "target": "Sanjay Mehta",
+    "target_type": "PERSON",
+    "type": "ASSOCIATED_WITH",
+    "source_document": "FIR-1021",
+    "date": "2026-07-22 00:00:00"
+  },
+  {
+    "source": "Amit Verma",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1021",
+    "date": "2026-07-22 00:00:00"
+  },
+  {
+    "source": "Sanjay Mehta",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1021",
+    "date": "2026-07-22 00:00:00"
+  },
+  {
+    "source": "Deepak Rao",
+    "source_type": "PERSON",
+    "target": "Manoj Tiwari",
+    "target_type": "PERSON",
+    "type": "ASSOCIATED_WITH",
+    "source_document": "FIR-1022",
+    "date": "2026-07-23 00:00:00"
+  },
+  {
+    "source": "Deepak Rao",
+    "source_type": "PERSON",
+    "target": "Sudama Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1022",
+    "date": "2026-07-23 00:00:00"
+  },
+  {
+    "source": "Manoj Tiwari",
+    "source_type": "PERSON",
+    "target": "Sudama Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1022",
+    "date": "2026-07-23 00:00:00"
+  },
+  {
+    "source": "Ravi Kumar",
+    "source_type": "PERSON",
+    "target": "Amit Verma",
+    "target_type": "PERSON",
+    "type": "ASSOCIATED_WITH",
+    "source_document": "FIR-1023",
+    "date": "2026-07-24 00:00:00"
+  },
+  {
+    "source": "Ravi Kumar",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1023",
+    "date": "2026-07-24 00:00:00"
+  },
+  {
+    "source": "Amit Verma",
+    "source_type": "PERSON",
+    "target": "Rajwada",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1023",
+    "date": "2026-07-24 00:00:00"
+  },
+  {
+    "source": "Sanjay Mehta",
+    "source_type": "PERSON",
+    "target": "Rahul Sharma",
+    "target_type": "PERSON",
+    "type": "ASSOCIATED_WITH",
+    "source_document": "FIR-1024",
+    "date": "2026-07-25 00:00:00"
+  },
+  {
+    "source": "Sanjay Mehta",
+    "source_type": "PERSON",
+    "target": "Malviya Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1024",
+    "date": "2026-07-25 00:00:00"
+  },
+  {
+    "source": "Rahul Sharma",
+    "source_type": "PERSON",
+    "target": "Malviya Nagar",
+    "target_type": "LOCATION",
+    "type": "PRESENT_AT",
+    "source_document": "FIR-1024",
+    "date": "2026-07-25 00:00:00"
+  }
+]

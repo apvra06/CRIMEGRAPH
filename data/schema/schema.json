@@ -1,0 +1,13 @@
+{
+  "entities": ["Person", "Location", "Vehicle", "Organization", "PhoneNumber", "Event"],
+  "relationships": [
+    "CALLED",
+    "MET_AT",
+    "TRANSACTED_WITH",
+    "ASSOCIATED_WITH",
+    "OWNS_VEHICLE",
+    "MEMBER_OF",
+    "PRESENT_AT"
+  ],
+  "common_properties": ["source_document", "timestamp", "confidence_score"]
+}

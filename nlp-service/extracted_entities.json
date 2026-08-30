@@ -1,0 +1,485 @@
+[
+  {
+    "doc_id": "FIR-1000",
+    "date": "2026-07-01 00:00:00",
+    "text": "Complainant reported Vikram Singh and Rahul Sharma meeting near Vijay Nagar on suspicious grounds.",
+    "entities": [
+      {
+        "text": "Vikram Singh",
+        "label": "PERSON"
+      },
+      {
+        "text": "Rahul Sharma",
+        "label": "PERSON"
+      },
+      {
+        "text": "Vijay Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1001",
+    "date": "2026-07-02 00:00:00",
+    "text": "Amit Verma aur Manoj Tiwari Malviya Nagar mein mile the, dono ka phone number record kiya gaya hai.",
+    "entities": [
+      {
+        "text": "Amit Verma",
+        "label": "PERSON"
+      },
+      {
+        "text": "Manoj Tiwari",
+        "label": "PERSON"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1002",
+    "date": "2026-07-03 00:00:00",
+    "text": "Suspect Vikram Singh was seen near Bhawarkuan with vehicle MP09XY5678, contacted 9123456780.",
+    "entities": [
+      {
+        "text": "Vikram Singh",
+        "label": "PERSON"
+      },
+      {
+        "text": "Bhawarkuan",
+        "label": "LOCATION"
+      },
+      {
+        "text": "MP09XY5678",
+        "label": "VEHICLE"
+      },
+      {
+        "text": "9123456780",
+        "label": "PHONE"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1003",
+    "date": "2026-07-04 00:00:00",
+    "text": "Vikram Singh aur Sanjay Mehta Rajwada mein mile the, dono ka phone number record kiya gaya hai.",
+    "entities": [
+      {
+        "text": "Vikram Singh",
+        "label": "PERSON"
+      },
+      {
+        "text": "Sanjay Mehta",
+        "label": "PERSON"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1004",
+    "date": "2026-07-05 00:00:00",
+    "text": "Rahul Sharma aur Deepak Rao Rajwada mein mile the, dono ka phone number record kiya gaya hai.",
+    "entities": [
+      {
+        "text": "Rahul Sharma",
+        "label": "PERSON"
+      },
+      {
+        "text": "Deepak Rao",
+        "label": "PERSON"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1005",
+    "date": "2026-07-06 00:00:00",
+    "text": "Ravi Kumar allegedly linked to Balaji Enterprises, frequently seen at Bhawarkuan.",
+    "entities": [
+      {
+        "text": "Ravi Kumar",
+        "label": "PERSON"
+      },
+      {
+        "text": "Balaji Enterprises",
+        "label": "ORGANIZATION"
+      },
+      {
+        "text": "Bhawarkuan",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1006",
+    "date": "2026-07-07 00:00:00",
+    "text": "Informant states Rahul Sharma received a call from 9345678901 while at Rajwada.",
+    "entities": [
+      {
+        "text": "Rahul Sharma",
+        "label": "PERSON"
+      },
+      {
+        "text": "9345678901",
+        "label": "PHONE"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1007",
+    "date": "2026-07-08 00:00:00",
+    "text": "Manoj Tiwari allegedly linked to Shree Traders, frequently seen at Rajwada.",
+    "entities": [
+      {
+        "text": "Manoj Tiwari",
+        "label": "PERSON"
+      },
+      {
+        "text": "Shree Traders",
+        "label": "ORGANIZATION"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1008",
+    "date": "2026-07-09 00:00:00",
+    "text": "Vikram Singh allegedly linked to Shree Traders, frequently seen at Bhawarkuan.",
+    "entities": [
+      {
+        "text": "Vikram Singh",
+        "label": "PERSON"
+      },
+      {
+        "text": "Shree Traders",
+        "label": "ORGANIZATION"
+      },
+      {
+        "text": "Bhawarkuan",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1009",
+    "date": "2026-07-10 00:00:00",
+    "text": "Informant states Manoj Tiwari received a call from 9012345678 while at Vijay Nagar.",
+    "entities": [
+      {
+        "text": "Manoj Tiwari",
+        "label": "PERSON"
+      },
+      {
+        "text": "9012345678",
+        "label": "PHONE"
+      },
+      {
+        "text": "Vijay Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1010",
+    "date": "2026-07-11 00:00:00",
+    "text": "Vikram Singh allegedly linked to Balaji Enterprises, frequently seen at Malviya Nagar.",
+    "entities": [
+      {
+        "text": "Vikram Singh",
+        "label": "PERSON"
+      },
+      {
+        "text": "Balaji Enterprises",
+        "label": "ORGANIZATION"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1011",
+    "date": "2026-07-12 00:00:00",
+    "text": "Suspect Manoj Tiwari was seen near Rajwada with vehicle unknown, contacted 9765432109.",
+    "entities": [
+      {
+        "text": "Manoj Tiwari",
+        "label": "PERSON"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      },
+      {
+        "text": "9765432109",
+        "label": "PHONE"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1012",
+    "date": "2026-07-13 00:00:00",
+    "text": "Suspect Rahul Sharma was seen near Rajwada with vehicle MP09AB1234, contacted 9876543210.",
+    "entities": [
+      {
+        "text": "Rahul Sharma",
+        "label": "PERSON"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      },
+      {
+        "text": "MP09AB1234",
+        "label": "VEHICLE"
+      },
+      {
+        "text": "9876543210",
+        "label": "PHONE"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1013",
+    "date": "2026-07-14 00:00:00",
+    "text": "Suresh Yadav allegedly linked to Om Logistics, frequently seen at Malviya Nagar.",
+    "entities": [
+      {
+        "text": "Suresh Yadav",
+        "label": "PERSON"
+      },
+      {
+        "text": "Om Logistics",
+        "label": "ORGANIZATION"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1014",
+    "date": "2026-07-15 00:00:00",
+    "text": "Sanjay Mehta allegedly linked to Shree Traders, frequently seen at Vijay Nagar.",
+    "entities": [
+      {
+        "text": "Sanjay Mehta",
+        "label": "PERSON"
+      },
+      {
+        "text": "Shree Traders",
+        "label": "ORGANIZATION"
+      },
+      {
+        "text": "Vijay Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1015",
+    "date": "2026-07-16 00:00:00",
+    "text": "Suspect Manoj Tiwari was seen near Vijay Nagar with vehicle unknown, contacted 9765432109.",
+    "entities": [
+      {
+        "text": "Manoj Tiwari",
+        "label": "PERSON"
+      },
+      {
+        "text": "Vijay Nagar",
+        "label": "LOCATION"
+      },
+      {
+        "text": "9765432109",
+        "label": "PHONE"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1016",
+    "date": "2026-07-17 00:00:00",
+    "text": "Informant states Amit Verma received a call from 9012345678 while at Rajwada.",
+    "entities": [
+      {
+        "text": "Amit Verma",
+        "label": "PERSON"
+      },
+      {
+        "text": "9012345678",
+        "label": "PHONE"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1017",
+    "date": "2026-07-18 00:00:00",
+    "text": "Ravi Kumar allegedly linked to Shree Traders, frequently seen at Sudama Nagar.",
+    "entities": [
+      {
+        "text": "Ravi Kumar",
+        "label": "PERSON"
+      },
+      {
+        "text": "Shree Traders",
+        "label": "ORGANIZATION"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1018",
+    "date": "2026-07-19 00:00:00",
+    "text": "Informant states Rahul Sharma received a call from 9123456780 while at Malviya Nagar.",
+    "entities": [
+      {
+        "text": "Rahul Sharma",
+        "label": "PERSON"
+      },
+      {
+        "text": "9123456780",
+        "label": "PHONE"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1019",
+    "date": "2026-07-20 00:00:00",
+    "text": "Deepak Rao allegedly linked to Balaji Enterprises, frequently seen at Rajwada.",
+    "entities": [
+      {
+        "text": "Deepak Rao",
+        "label": "PERSON"
+      },
+      {
+        "text": "Balaji Enterprises",
+        "label": "ORGANIZATION"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1020",
+    "date": "2026-07-21 00:00:00",
+    "text": "Informant states Suresh Yadav received a call from 9765432109 while at Bhawarkuan.",
+    "entities": [
+      {
+        "text": "Suresh Yadav",
+        "label": "PERSON"
+      },
+      {
+        "text": "9765432109",
+        "label": "PHONE"
+      },
+      {
+        "text": "Bhawarkuan",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1021",
+    "date": "2026-07-22 00:00:00",
+    "text": "Amit Verma aur Sanjay Mehta Rajwada mein mile the, dono ka phone number record kiya gaya hai.",
+    "entities": [
+      {
+        "text": "Amit Verma",
+        "label": "PERSON"
+      },
+      {
+        "text": "Sanjay Mehta",
+        "label": "PERSON"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1022",
+    "date": "2026-07-23 00:00:00",
+    "text": "Deepak Rao aur Manoj Tiwari Sudama Nagar mein mile the, dono ka phone number record kiya gaya hai.",
+    "entities": [
+      {
+        "text": "Deepak Rao",
+        "label": "PERSON"
+      },
+      {
+        "text": "Manoj Tiwari",
+        "label": "PERSON"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1023",
+    "date": "2026-07-24 00:00:00",
+    "text": "Ravi Kumar aur Amit Verma Rajwada mein mile the, dono ka phone number record kiya gaya hai.",
+    "entities": [
+      {
+        "text": "Ravi Kumar",
+        "label": "PERSON"
+      },
+      {
+        "text": "Amit Verma",
+        "label": "PERSON"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1024",
+    "date": "2026-07-25 00:00:00",
+    "text": "Complainant reported Sanjay Mehta and Rahul Sharma meeting near Malviya Nagar on suspicious grounds.",
+    "entities": [
+      {
+        "text": "Sanjay Mehta",
+        "label": "PERSON"
+      },
+      {
+        "text": "Rahul Sharma",
+        "label": "PERSON"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION"
+      }
+    ]
+  }
+]
