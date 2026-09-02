@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 650px;
+                 background-color: #0E1117;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#9CC97B", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:2", "label": "9345678901", "shape": "dot", "title": "PhoneNumber: 9345678901", "value": 15}, {"color": "#9CC97B", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:50", "label": "9456789012", "shape": "dot", "title": "PhoneNumber: 9456789012", "value": 15}, {"color": "#C99A3C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "label": "Sanjay Mehta", "shape": "dot", "title": "Person: Sanjay Mehta\nInfluence (PageRank): 1.072\nBridge score: 0.78\nCell/Community: 7", "value": 1.0719810726710615}, {"color": "#D9480F", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "label": "Ravi Kumar", "shape": "dot", "title": "Person: Ravi Kumar\nInfluence (PageRank): 1.078\nBridge score: 3.68\nCell/Community: 7\n\u26a0 FLAGGED: STRUCTURING", "value": 1.0783672510110465}, {"color": "#4FB6AC", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:0", "label": "Malviya Nagar", "shape": "dot", "title": "Location: Malviya Nagar", "value": 15}, {"color": "#4FB6AC", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:5", "label": "Rajwada", "shape": "dot", "title": "Location: Rajwada", "value": 15}, {"color": "#4FB6AC", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:8", "label": "Sudama Nagar", "shape": "dot", "title": "Location: Sudama Nagar", "value": 15}, {"color": "#4FB6AC", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:11", "label": "Vijay Nagar", "shape": "dot", "title": "Location: Vijay Nagar", "value": 15}, {"color": "#4FB6AC", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:17", "label": "Bhawarkuan", "shape": "dot", "title": "Location: Bhawarkuan", "value": 15}, {"color": "#8C7BC9", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:14", "label": "Om Logistics", "shape": "dot", "title": "Organization: Om Logistics", "value": 15}, {"color": "#C99A3C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:33", "label": "Deepak Rao", "shape": "dot", "title": "Person: Deepak Rao\nInfluence (PageRank): 1.091\nBridge score: 3.67\nCell/Community: 13", "value": 1.0910751128396956}, {"color": "#9CC97B", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:7", "label": "9123456780", "shape": "dot", "title": "PhoneNumber: 9123456780", "value": 15}, {"color": "#D9480F", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:21", "label": "9876543210", "shape": "dot", "title": "PhoneNumber: 9876543210\n\u26a0 FLAGGED: CALL_SPIKE", "value": 15}, {"color": "#9CC97B", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:30", "label": "9871234560", "shape": "dot", "title": "PhoneNumber: 9871234560", "value": 15}, {"color": "#9CC97B", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:32", "label": "9988776655", "shape": "dot", "title": "PhoneNumber: 9988776655", "value": 15}, {"color": "#C99A3C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "label": "Rahul Sharma", "shape": "dot", "title": "Person: Rahul Sharma\nInfluence (PageRank): 1.358\nBridge score: 13.79\nCell/Community: 8", "value": 1.3579203821839234}, {"color": "#C99A3C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "label": "Amit Verma", "shape": "dot", "title": "Person: Amit Verma\nInfluence (PageRank): 1.294\nBridge score: 9.01\nCell/Community: 8", "value": 1.2942555021152709}, {"color": "#D9480F", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:22", "label": "Vikram Singh", "shape": "dot", "title": "Person: Vikram Singh\nInfluence (PageRank): 1.350\nBridge score: 3.21\nCell/Community: 8\n\u26a0 FLAGGED: STRUCTURING", "value": 1.3502520923044452}, {"color": "#C99A3C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:35", "label": "Farhan Qureshi", "shape": "dot", "title": "Person: Farhan Qureshi\nInfluence (PageRank): 0.188\nBridge score: 0.00\nCell/Community: 8", "value": 0.1882451224422076}, {"color": "#C97B9C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:20", "label": "MP09AB1234", "shape": "dot", "title": "Vehicle: MP09AB1234", "value": 15}, {"color": "#C99A3C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:36", "label": "Priya Nair", "shape": "dot", "title": "Person: Priya Nair\nInfluence (PageRank): 0.189\nBridge score: 0.00\nCell/Community: 8", "value": 0.18905925568559231}, {"color": "#C99A3C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:39", "label": "Manoj Tiwari", "shape": "dot", "title": "Person: Manoj Tiwari\nInfluence (PageRank): 1.046\nBridge score: 1.83\nCell/Community: 13", "value": 1.0457348849288028}, {"color": "#C97B9C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:31", "label": "MP04CD9012", "shape": "dot", "title": "Vehicle: MP04CD9012", "value": 15}, {"color": "#9CC97B", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:49", "label": "23456780", "shape": "dot", "title": "PhoneNumber: 23456780", "value": 15}, {"color": "#8C7BC9", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:18", "label": "Shree Traders", "shape": "dot", "title": "Organization: Shree Traders", "value": 15}, {"color": "#8C7BC9", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:19", "label": "Balaji Enterprises", "shape": "dot", "title": "Organization: Balaji Enterprises", "value": 15}, {"color": "#C97B9C", "font": {"color": "#EEEEEE"}, "id": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:1", "label": "MP04GH7890", "shape": "dot", "title": "Vehicle: MP04GH7890", "value": 15}]);
+                  edges = new vis.DataSet([{"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:2", "title": "CALLED  2026-07-27T05:47:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:50", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "ASSOCIATED_WITH  2026-07-15 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "PRESENT_AT  2026-07-03 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:0", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "PRESENT_AT  2026-07-02 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:5", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "PRESENT_AT  2026-07-20 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:8", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "PRESENT_AT  2026-07-15 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:11", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "PRESENT_AT  2026-07-13 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:17", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "HAS_PHONE  2026-07-02 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:2", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "MEMBER_OF  2026-07-21 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:14", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:3", "title": "TRANSACTED_WITH  2026-07-24T07:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:33", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:7", "title": "CALLED  2026-07-02T21:41:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:21", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:7", "title": "CALLED  2026-07-27T04:16:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:30", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:7", "title": "CALLED  2026-07-24T04:24:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:32", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "ASSOCIATED_WITH  2026-07-03 11:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "ASSOCIATED_WITH  2026-07-24 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:22", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "ASSOCIATED_WITH  2026-07-26 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:35", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "PRESENT_AT  2026-07-26 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:0", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "PRESENT_AT  2026-07-16 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:5", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "PRESENT_AT  2026-07-12 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:8", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "PRESENT_AT  2026-07-11 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:11", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "PRESENT_AT  2026-07-04 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:17", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "OWNS_VEHICLE  2026-07-11 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:20", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "HAS_PHONE  2026-07-11 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:21", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "MEMBER_OF  2026-07-06 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:14", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:9", "title": "TRANSACTED_WITH  2026-07-13T17:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "ASSOCIATED_WITH  2026-07-05 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:22", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "ASSOCIATED_WITH  2026-07-27 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:36", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "ASSOCIATED_WITH  2026-07-15 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:39", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "PRESENT_AT  2026-07-21 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:0", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "PRESENT_AT  2026-07-03 11:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:5", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "PRESENT_AT  2026-07-15 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:8", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "PRESENT_AT  2026-07-09 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:11", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "PRESENT_AT  2026-07-22 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:17", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "OWNS_VEHICLE  2026-07-22 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:31", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "HAS_PHONE  2026-07-22 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:32", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "HAS_PHONE  2026-07-03 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:49", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "MEMBER_OF  2026-07-09 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:18", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:10", "title": "MEMBER_OF  2026-07-10 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:19", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "title": "PRESENT_AT  2026-07-03 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:0", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "title": "PRESENT_AT  2026-07-20 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:8", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "title": "PRESENT_AT  2026-07-15 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:11", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "title": "PRESENT_AT  2026-07-07 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:17", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "title": "OWNS_VEHICLE  2026-07-14 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:1", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "title": "HAS_PHONE  2026-07-14 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:2", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "title": "MEMBER_OF  2026-07-20 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:14", "width": 1}, {"color": "#555555", "from": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:16", "title": "MEMBER_OF  2026-07-07 00:00:00", "to": "4:1ee2a83c-101b-4e94-b606-d182de12f21a:19", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"scaling": {"min": 12, "max": 42}, "font": {"size": 14}}, "physics": {"stabilization": {"enabled": true, "iterations": 250}}, "interaction": {"hover": true, "navigationButtons": true, "keyboard": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
