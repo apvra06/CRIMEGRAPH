@@ -2,41 +2,49 @@
   {
     "name": "Rahul Sharma",
     "phone": "9876543210",
-    "vehicle": "MP09AB1234"
+    "vehicle": "MP09AB1234",
+    "group": "A"
   },
   {
     "name": "Vikram Singh",
     "phone": "9123456780",
-    "vehicle": "MP09XY5678"
+    "vehicle": "MP09XY5678",
+    "group": "A"
   },
   {
     "name": "Amit Verma",
     "phone": "9988776655",
-    "vehicle": "MP04CD9012"
+    "vehicle": "MP04CD9012",
+    "group": "A"
   },
   {
     "name": "Suresh Yadav",
     "phone": "9871234560",
-    "vehicle": null
+    "vehicle": null,
+    "group": "B"
   },
   {
     "name": "Deepak Rao",
     "phone": "9012345678",
-    "vehicle": "MP09EF3456"
+    "vehicle": "MP09EF3456",
+    "group": "B"
   },
   {
     "name": "Manoj Tiwari",
     "phone": "9765432109",
-    "vehicle": null
+    "vehicle": null,
+    "group": "B"
   },
   {
     "name": "Ravi Kumar",
     "phone": "9345678901",
-    "vehicle": "MP04GH7890"
+    "vehicle": "MP04GH7890",
+    "group": "C"
   },
   {
     "name": "Sanjay Mehta",
     "phone": "9456789012",
-    "vehicle": null
+    "vehicle": null,
+    "group": "C"
   }
 ]

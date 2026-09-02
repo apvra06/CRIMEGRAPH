@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Rahul Sharma",
+    "prior_convictions": 0,
+    "known_associates": [
+      "Vikram Singh",
+      "Amit Verma"
+    ],
+    "last_case_id": "CASE-2021-314"
+  },
+  {
+    "name": "Amit Verma",
+    "prior_convictions": 2,
+    "known_associates": [
+      "Rahul Sharma",
+      "Vikram Singh"
+    ],
+    "last_case_id": "CASE-2025-724"
+  },
+  {
+    "name": "Deepak Rao",
+    "prior_convictions": 1,
+    "known_associates": [
+      "Suresh Yadav",
+      "Manoj Tiwari"
+    ],
+    "last_case_id": "CASE-2021-933"
+  },
+  {
+    "name": "Manoj Tiwari",
+    "prior_convictions": 0,
+    "known_associates": [
+      "Suresh Yadav",
+      "Deepak Rao"
+    ],
+    "last_case_id": "CASE-2024-459"
+  },
+  {
+    "name": "Ravi Kumar",
+    "prior_convictions": 1,
+    "known_associates": [
+      "Sanjay Mehta"
+    ],
+    "last_case_id": "CASE-2022-820"
+  },
+  {
+    "name": "Sanjay Mehta",
+    "prior_convictions": 2,
+    "known_associates": [
+      "Ravi Kumar"
+    ],
+    "last_case_id": "CASE-2024-795"
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "doc_id": "SURV-2000",
+    "agent_id": "AGT-185",
+    "text": "Field team tracked Manoj T. to a meeting with D. Rao at Vijay Nagar; no physical exchange observed.",
+    "location_confirmed": true,
+    "date": "2026-07-27 02:00:00"
+  },
+  {
+    "doc_id": "SURV-2001",
+    "agent_id": "AGT-185",
+    "text": "Subject Vikram Singh observed entering premises near Rajwada at approx 17:00, departed after 12 minutes.",
+    "location_confirmed": true,
+    "date": "2026-07-20 20:00:00"
+  },
+  {
+    "doc_id": "SURV-2002",
+    "agent_id": "AGT-186",
+    "text": "Surveillance of Manoj T. inconclusive; subject appeared to evade tail.",
+    "location_confirmed": false,
+    "date": "2026-07-17 22:00:00"
+  },
+  {
+    "doc_id": "SURV-2003",
+    "agent_id": "AGT-151",
+    "text": "Field team tracked Rahul Sharma to a meeting with A. Verma at Rajwada; no physical exchange observed.",
+    "location_confirmed": true,
+    "date": "2026-07-03 11:00:00"
+  },
+  {
+    "doc_id": "SURV-2004",
+    "agent_id": "AGT-189",
+    "text": "Subject A. Verma observed entering premises near Malviya Nagar at approx 21:00, departed after 12 minutes.",
+    "location_confirmed": true,
+    "date": "2026-07-21 00:00:00"
+  },
+  {
+    "doc_id": "SURV-2005",
+    "agent_id": "AGT-104",
+    "text": "Subject D. Rao observed entering premises near Malviya Nagar at approx 14:00, departed after 74 minutes.",
+    "location_confirmed": true,
+    "date": "2026-07-19 21:00:00"
+  },
+  {
+    "doc_id": "SURV-2006",
+    "agent_id": "AGT-196",
+    "text": "Subject S. Yadav observed entering premises near Bhawarkuan at approx 18:00, departed after 74 minutes.",
+    "location_confirmed": true,
+    "date": "2026-07-11 12:00:00"
+  },
+  {
+    "doc_id": "SURV-2007",
+    "agent_id": "AGT-134",
+    "text": "Surveillance of R. Kumar inconclusive; subject appeared to evade tail.",
+    "location_confirmed": false,
+    "date": "2026-07-01 20:00:00"
+  },
+  {
+    "doc_id": "SURV-2008",
+    "agent_id": "AGT-119",
+    "text": "Surveillance of D. Rao inconclusive; subject appeared to evade tail.",
+    "location_confirmed": true,
+    "date": "2026-07-03 08:00:00"
+  },
+  {
+    "doc_id": "SURV-2009",
+    "agent_id": "AGT-123",
+    "text": "Subject R. Kumar observed entering premises near Malviya Nagar at approx 14:00, departed after 18 minutes.",
+    "location_confirmed": true,
+    "date": "2026-07-05 02:00:00"
+  },
+  {
+    "doc_id": "SURV-2010",
+    "agent_id": "AGT-152",
+    "text": "Sanjay Mehta observed loading unmarked packages into vehicle an unmarked vehicle outside an undisclosed location.",
+    "location_confirmed": false,
+    "date": "2026-07-01 09:00:00"
+  },
+  {
+    "doc_id": "SURV-2011",
+    "agent_id": "AGT-155",
+    "text": "Surveillance of A. Verma inconclusive; subject appeared to evade tail.",
+    "location_confirmed": true,
+    "date": "2026-07-03 05:00:00"
+  },
+  {
+    "doc_id": "SURV-2012",
+    "agent_id": "AGT-142",
+    "text": "Surveillance of Deepak Rao inconclusive; subject appeared to evade tail.",
+    "location_confirmed": true,
+    "date": "2026-07-01 12:00:00"
+  },
+  {
+    "doc_id": "SURV-2013",
+    "agent_id": "AGT-150",
+    "text": "Field team tracked Deepak Rao to a meeting with Manoj Tiwari at Sudama Nagar; no physical exchange observed.",
+    "location_confirmed": true,
+    "date": "2026-07-11 05:00:00"
+  },
+  {
+    "doc_id": "SURV-2014",
+    "agent_id": "AGT-175",
+    "text": "Field team tracked Deepak Rao to a meeting with Manoj T. at Bhawarkuan; no physical exchange observed.",
+    "location_confirmed": true,
+    "date": "2026-07-19 06:00:00"
+  }
+]

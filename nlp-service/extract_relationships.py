@@ -27,26 +27,20 @@ RELATION_RULES = {
 def derive_relationships(report):
     entities = report["entities"]
     relationships = []
-    # Only relate PAIRS involving at least one PERSON, and skip PERSON-PERSON
-    # self pairs / duplicate entity text pairs.
     for e1, e2 in combinations(entities, 2):
-        if e1["text"] == e2["text"]:
+        t1, t2 = e1.get("resolved_text", e1["text"]), e2.get("resolved_text", e2["text"])
+        if t1 == t2:
             continue
         label_pair = frozenset([e1["label"], e2["label"]])
         rel_type = RELATION_RULES.get(label_pair)
         if not rel_type:
             continue
-        # Normalize direction: PERSON is always the source node where relevant
         if e1["label"] != "PERSON" and e2["label"] == "PERSON":
-            e1, e2 = e2, e1
+            e1, e2, t1, t2 = e2, e1, t2, t1
         relationships.append({
-            "source": e1["text"],
-            "source_type": e1["label"],
-            "target": e2["text"],
-            "target_type": e2["label"],
-            "type": rel_type,
-            "source_document": report["doc_id"],
-            "date": report["date"],
+            "source": t1, "source_type": e1["label"],
+            "target": t2, "target_type": e2["label"],
+            "type": rel_type, "source_document": report["doc_id"], "date": report["date"],
         })
     return relationships
 

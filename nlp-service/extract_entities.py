@@ -1,17 +1,19 @@
 """
 Entity extraction pipeline for the crime network analysis prototype.
 
-Reads FIR-style text reports and extracts:
-  - PERSON   (spaCy's built-in NER)
+Reads FIR-style (and now surveillance/social/intel) text reports and extracts:
+  - PERSON   (spaCy's built-in NER + known-people gazetteer + alias/handle gazetteer)
   - GPE/LOC  (spaCy's built-in NER, mapped to LOCATION)
   - ORG      (spaCy's built-in NER)
-  - PHONE    (custom regex rule)
+  - PHONE    (custom regex rule, tolerant of +91 / spaces / dashes)
   - VEHICLE  (custom regex rule)
 
 Outputs structured JSON: one record per report, with a list of
-{text, label} entities, ready to feed into the graph-service ETL step.
+{text, label} entities, ready to feed into resolve_aliases.py and then
+the graph-service ETL step.
 """
 import json
+import os
 import spacy
 from spacy.pipeline import EntityRuler
 
@@ -20,13 +22,6 @@ from spacy.pipeline import EntityRuler
 # police jurisdiction records), not a hardcoded list — but for a prototype,
 # a small lookup list fixes most of the code-mixed (Hinglish) NER failures
 # without needing a full fine-tuned multilingual model.
-# Known persons of interest — in a real system this would be a lookup
-# against the criminal history database mentioned in the problem statement,
-# not a hardcoded list. Cross-referencing extracted text against a known-
-# persons registry is a standard, legitimate technique — and it also covers
-# for the base English NER model's weak recall on code-mixed sentences like
-# "Amit Verma aur Manoj Tiwari" (Hindi "aur" instead of English "and" breaks
-# the model's learned name-list pattern entirely).
 KNOWN_PEOPLE = [
     "Rahul Sharma", "Vikram Singh", "Amit Verma", "Suresh Yadav",
     "Deepak Rao", "Manoj Tiwari", "Ravi Kumar", "Sanjay Mehta",
@@ -34,6 +29,39 @@ KNOWN_PEOPLE = [
 
 KNOWN_LOCATIONS = ["Malviya Nagar", "Rajwada", "Vijay Nagar", "Bhawarkuan", "Sudama Nagar"]
 KNOWN_ORGS = ["Shree Traders", "Om Logistics", "Balaji Enterprises"]
+
+# Path to the alias/handle table written by generate_mock_data.py. Loading
+# this at pipeline build time means variants like "R. Sharma" and handles
+# like "@rahul_47" get registered as PERSON patterns at the SAME tier as
+# canonical names — the ruler doesn't care whether a name is "the real one"
+# or a variant, it just needs to know it's a name worth tagging. Actually
+# collapsing variant -> canonical identity happens later, in
+# resolve_aliases.py; this step is only responsible for finding the mention.
+ALIAS_PATH = os.path.join(
+    os.path.dirname(__file__), "..", "data", "mock", "alias_ground_truth.json"
+)
+
+
+def load_alias_names():
+    """Returns (multi_word_variants, single_token_handles).
+    Missing file is expected before the mock-data generator has been run
+    with the alias export step, so this fails soft rather than crashing
+    the whole pipeline."""
+    variants = []
+    handles = []
+    try:
+        with open(ALIAS_PATH, encoding="utf-8") as f:
+            alias_data = json.load(f)
+    except FileNotFoundError:
+        return variants, handles
+
+    for canonical, value in alias_data.items():
+        if canonical == "_handles":
+            handles.extend(value.values())
+        else:
+            variants.extend(value)
+    return variants, handles
+
 
 def build_pipeline():
     nlp = spacy.load("en_core_web_sm")
@@ -46,8 +74,17 @@ def build_pipeline():
     if "entity_ruler" not in nlp.pipe_names:
         ruler = nlp.add_pipe("entity_ruler", before="ner")
         patterns = [
-            # Indian mobile numbers: 10 digits, optionally +91 prefixed
+            # Indian mobile numbers: 10 digits, optionally +91 prefixed,
+            # optionally with a space after +91 or a dash splitting the
+            # digits (e.g. "9876543210", "+919876543210", "+91 9876543210",
+            # "98765-43210"). Real CDR/FIR data mixes these formats, so the
+            # extraction rule has to tolerate all of them, not just one.
             {"label": "PHONE", "pattern": [{"TEXT": {"REGEX": r"^(\+?91)?\d{10}$"}}]},
+            {"label": "PHONE", "pattern": [
+                {"TEXT": {"REGEX": r"^\+?91$"}},
+                {"TEXT": {"REGEX": r"^\d{10}$"}},
+            ]},
+            {"label": "PHONE", "pattern": [{"TEXT": {"REGEX": r"^\d{5}-\d{5}$"}}]},
             # Indian vehicle plates: e.g. MP09AB1234
             {"label": "VEHICLE", "pattern": [{"TEXT": {"REGEX": r"^[A-Z]{2}\d{2}[A-Z]{1,2}\d{4}$"}}]},
         ]
@@ -58,8 +95,21 @@ def build_pipeline():
             patterns.append({"label": "GPE", "pattern": [{"TEXT": tok} for tok in loc.split()]})
         for org in KNOWN_ORGS:
             patterns.append({"label": "ORG", "pattern": [{"TEXT": tok} for tok in org.split()]})
+
+        # Name variants ("R. Sharma", "Vicky Singh") and social handles
+        # ("@rahul_47") from the alias table. Variants are multi-word like
+        # canonical names, so they get the same token-by-token pattern.
+        # Handles are single unbroken tokens (no internal spaces), so they
+        # get a direct TEXT match instead.
+        variant_names, handles = load_alias_names()
+        for variant in variant_names:
+            patterns.append({"label": "PERSON", "pattern": [{"TEXT": tok} for tok in variant.split()]})
+        for handle in handles:
+            patterns.append({"label": "PERSON", "pattern": [{"TEXT": handle}]})
+
         ruler.add_patterns(patterns)
     return nlp
+
 
 LABEL_MAP = {
     "PERSON": "PERSON",
@@ -76,6 +126,7 @@ LABEL_MAP = {
 # need this crutch, but a blocklist gets us most of the accuracy for free.
 HINDI_STOPWORDS = {"hai", "the", "gaya", "kiya", "mein", "ka", "aur", "dono"}
 
+
 def extract_entities(nlp, text):
     doc = nlp(text)
     entities = []
@@ -85,18 +136,29 @@ def extract_entities(nlp, text):
             continue
         if ent.text.lower() in HINDI_STOPWORDS:
             continue
-        # Extra guard for PERSON: real names are capitalized ("Vikram Singh").
+        # Extra guard for PERSON: real names/handles are capitalized or
+        # start with a known symbol ("Vikram Singh", "R.", "@rahul_47").
         # Hindi/Hinglish function-word spans ("mein mile", "dono ka") are
         # lowercase and slip past the statistical model on some spaCy model
-        # versions. Requiring every token to be alphabetic + title-case
-        # filters this whole error category out, regardless of which exact
-        # words leak through.
+        # versions. We allow a token through if EITHER it's alphabetic +
+        # title-case (covers canonical names and "Vicky"/"Sharma") OR it
+        # starts with '@' or is a single uppercase-letter-plus-period
+        # initial (covers handles and "R." style variants).
         if mapped_label == "PERSON":
             tokens = ent.text.split()
-            if not all(tok.isalpha() and tok.istitle() for tok in tokens):
+            def token_ok(tok):
+                if tok.startswith("@"):
+                    return True
+                if tok.isalpha() and tok.istitle():
+                    return True
+                if tok.rstrip(".").isalpha() and tok[0].isupper() and len(tok.rstrip(".")) <= 2:
+                    return True  # short initials like "R."
+                return False
+            if not all(token_ok(tok) for tok in tokens):
                 continue
         entities.append({"text": ent.text, "label": mapped_label})
     return entities
+
 
 def process_reports(input_path, output_path):
     nlp = build_pipeline()
@@ -117,6 +179,7 @@ def process_reports(input_path, output_path):
         json.dump(results, f, indent=2)
 
     return results
+
 
 if __name__ == "__main__":
     results = process_reports("../data/mock/fir_reports.json", "extracted_entities.json")
