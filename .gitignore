@@ -15,8 +15,10 @@ Thumbs.db
 # Editor
 .vscode/
 
-# Future: node_modules once frontend/ is built
+# Node
 node_modules/
+frontend/dist/
+frontend/tsconfig.tsbuildinfo
 
 # Logs / temp
 *.log

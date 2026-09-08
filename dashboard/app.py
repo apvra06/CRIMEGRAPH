@@ -4,6 +4,7 @@ Streamlit dashboard for the AI-powered criminal network analysis prototype.
 Run with: streamlit run app.py
 Requires config.py (copy config_template.py and fill in real credentials).
 """
+import statistics
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
@@ -14,11 +15,6 @@ from config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
 st.set_page_config(page_title="Crime Network Analysis", layout="wide", page_icon="◆")
 
 # --------------------------------------------------------- Design tokens ---
-# Palette: deep navy-slate base (not pure black) with amber as the primary
-# data accent and teal as secondary — an analyst-terminal identity rather
-# than the generic near-black + single bright accent look. Burnt-orange is
-# reserved exclusively for anomaly flags so it always signals danger and
-# never doubles as decoration.
 BG = "#0B0F1A"
 SURFACE = "#131826"
 BORDER = "#232A3D"
@@ -27,16 +23,25 @@ TEAL = "#4FB6AC"
 ALERT = "#D9480F"
 TEXT_MUTED = "#8A93A6"
 
-ENTITY_COLORS = {
-    "Person": AMBER,
-    "Location": TEAL,
-    "Organization": "#8C7BC9",
-    "PhoneNumber": "#9CC97B",
-    "Vehicle": "#C97B9C",
+# Role styling for Person nodes — shape carries the primary signal (so it
+# reads correctly even in grayscale/print), color reinforces it.
+ROLE_STYLE = {
+    "Kingpin":      {"shape": "star",     "color": "#E5B94E", "size": 46, "borderWidth": 3, "glyph": "★"},
+    "Intermediary": {"shape": "diamond",  "color": TEAL,      "size": 34, "borderWidth": 3, "glyph": "◆"},
+    "Associate":    {"shape": "dot",      "color": "#6B93C9", "size": 20, "borderWidth": 1, "glyph": "●"},
 }
+ROLE_LEVEL = {"Kingpin": 0, "Intermediary": 1, "Associate": 2}
+
+# Non-person entity types get their own shape+color, distinct from any role
+TYPE_STYLE = {
+    "Location":     {"shape": "square",      "color": "#5E8FC9", "glyph": "■"},
+    "Organization": {"shape": "triangle",    "color": "#8C7BC9", "glyph": "▲"},
+    "PhoneNumber":  {"shape": "triangleDown", "color": "#9CC97B", "glyph": "▼"},
+    "Vehicle":      {"shape": "box",         "color": "#C97B9C", "glyph": "▢"},
+}
+
 COMMUNITY_PALETTE = ["#C99A3C", "#4FB6AC", "#8C7BC9", "#9CC97B", "#C97B9C", "#6B93C9", "#C9A05E", "#5EC9AE"]
 ANOMALY_COLOR = ALERT
-MUTED_COLOR = "#3A4152"
 
 # --------------------------------------------------------------- Styling ---
 st.markdown(f"""
@@ -71,19 +76,15 @@ st.markdown(f"""
     .stTabs [aria-selected="true"] {{ color: {AMBER} !important; border-bottom-color: {AMBER} !important; }}
 
     .legend-item {{ display: inline-block; margin-right: 16px; font-size: 0.8rem; color: {TEXT_MUTED}; font-family: 'IBM Plex Mono', monospace; }}
-    .legend-dot {{ display: inline-block; width: 8px; height: 8px; margin-right: 6px; }}
+    .legend-glyph {{ margin-right: 5px; }}
 
     section[data-testid="stSidebar"] {{ background-color: {SURFACE}; border-right: 1px solid {BORDER}; }}
-
     div[data-testid="stDataFrame"] {{ border: 1px solid {BORDER}; }}
 </style>
 """, unsafe_allow_html=True)
 
 
 def show_table(df):
-    """Displays a dataframe with a 1-indexed row number instead of pandas'
-    default 0-indexed row labels — matches how an investigator would
-    actually number a briefing list."""
     if df is not None and not df.empty:
         df = df.copy()
         df.index = range(1, len(df) + 1)
@@ -107,7 +108,69 @@ def run_query_raw(query, params=None):
         return list(session.run(query, params or {}))
 
 
-def build_graph_query(view_mode, selected_person=None, selected_comm=None, date_range=None):
+def find_shortest_path(p1, p2):
+    """Tries the modern Cypher 25 'SHORTEST' path-selector syntax first,
+    then falls back to the legacy shortestPath() function — Neo4j is
+    transitioning between the two, so which one works depends on the exact
+    server version. Both return a record under the key 'path'."""
+    queries = [
+        "MATCH path = SHORTEST 1 (a:Person {name: $p1})-[*..6]-(b:Person {name: $p2}) RETURN path",
+        "MATCH path = shortestPath((a:Person {name: $p1})-[*..6]-(b:Person {name: $p2})) RETURN path",
+    ]
+    last_error = None
+    for q in queries:
+        try:
+            result = run_query_raw(q, {"p1": p1, "p2": p2})
+            if result:
+                return result, None
+        except Exception as e:
+            last_error = e
+            continue
+    return [], last_error
+
+
+@st.cache_data(ttl=30)
+def compute_roles():
+    """Classifies every Person into Kingpin / Intermediary / Associate:
+      - Kingpin: highest PageRank WITHIN their own detected community
+        (so each cell gets its own leader, not just one global winner)
+      - Intermediary: betweenness centrality notably above the network
+        average (mean + 1 std), i.e. a real structural bridge
+      - Associate: everyone else
+    """
+    rows = run_query("""
+        MATCH (p:Person)
+        RETURN p.name AS name, p.community AS community,
+               p.pageRankScore AS pageRankScore, p.betweennessScore AS betweennessScore
+    """)
+    if not rows:
+        return {}
+
+    best_in_community = {}
+    for r in rows:
+        comm = r["community"]
+        pr = r["pageRankScore"] or 0
+        if comm not in best_in_community or pr > best_in_community[comm][1]:
+            best_in_community[comm] = (r["name"], pr)
+    kingpins = {name for name, _ in best_in_community.values()}
+
+    scores = [r["betweennessScore"] or 0 for r in rows]
+    mean_b = statistics.mean(scores)
+    std_b = statistics.pstdev(scores)
+    threshold_b = mean_b + std_b
+
+    roles = {}
+    for r in rows:
+        if r["name"] in kingpins:
+            roles[r["name"]] = "Kingpin"
+        elif threshold_b > 0 and (r["betweennessScore"] or 0) >= threshold_b:
+            roles[r["name"]] = "Intermediary"
+        else:
+            roles[r["name"]] = "Associate"
+    return roles
+
+
+def build_graph_query(view_mode, selected_person=None, selected_comm=None, date_range=None, people_only=False):
     where_clauses = []
     params = {}
     if date_range:
@@ -117,14 +180,16 @@ def build_graph_query(view_mode, selected_person=None, selected_comm=None, date_
         )
         params["start"], params["end"] = date_range
 
+    m_label = ":Person" if people_only else ""
     if view_mode == "Specific person":
-        base = "MATCH (n:Person {name: $name})-[r]-(m)"
+        base = f"MATCH (n:Person {{name: $name}})-[r]-(m{m_label})"
         params["name"] = selected_person
     elif view_mode == "Specific community":
-        base = "MATCH (n:Person {community: $comm})-[r]-(m)"
+        base = f"MATCH (n:Person {{community: $comm}})-[r]-(m{m_label})"
         params["comm"] = selected_comm
     else:
-        base = "MATCH (n)-[r]-(m)"
+        n_label = ":Person" if people_only else ""
+        base = f"MATCH (n{n_label})-[r]-(m{m_label})"
 
     query = base
     if where_clauses:
@@ -133,23 +198,32 @@ def build_graph_query(view_mode, selected_person=None, selected_comm=None, date_
     return query, params
 
 
-def render_graph(records, color_by="Entity type", height=650):
+def node_style(node, role_map, color_by):
+    node_type = next(iter(node.labels), "Unknown")
+    if node_type == "Person":
+        role = role_map.get(node.get("name"), "Associate")
+        style = dict(ROLE_STYLE[role])
+        if color_by == "Community" and node.get("community") is not None:
+            style["color"] = COMMUNITY_PALETTE[node.get("community") % len(COMMUNITY_PALETTE)]
+        if node.get("anomalyFlag"):
+            style["color"] = ANOMALY_COLOR
+        style["level"] = ROLE_LEVEL[role]
+        return style, role
+    else:
+        style = dict(TYPE_STYLE.get(node_type, {"shape": "dot", "color": "#999999", "glyph": "●"}))
+        style.setdefault("size", 16)
+        style.setdefault("borderWidth", 1)
+        if node.get("anomalyFlag"):
+            style["color"] = ANOMALY_COLOR
+        style["level"] = 3
+        return style, None
+
+
+def render_graph(records, role_map, color_by="Entity type", layout="Force-directed", height=650):
     net = Network(height=f"{height}px", width="100%", bgcolor="#0E1117", font_color="#EEEEEE", directed=False)
-    net.barnes_hut(gravity=-4000, central_gravity=0.35, spring_length=110, spring_strength=0.045, damping=0.15)
     added_nodes = set()
 
-    def node_color(node):
-        if node.get("anomalyFlag"):
-            return ANOMALY_COLOR
-        node_type = next(iter(node.labels), "Unknown")
-        if color_by == "Community" and node_type == "Person" and node.get("community") is not None:
-            return COMMUNITY_PALETTE[node.get("community") % len(COMMUNITY_PALETTE)]
-        if color_by == "Community":
-            return MUTED_COLOR
-        return ENTITY_COLORS.get(node_type, "#999999")
-
     def flatten(record):
-        """Yields (node_or_rel) items, unwrapping Path objects if present."""
         for value in record.values():
             if hasattr(value, "nodes") and hasattr(value, "relationships"):  # Path
                 yield from value.nodes
@@ -166,7 +240,11 @@ def render_graph(records, color_by="Entity type", height=650):
                 continue
             label = item.get("name", "Unknown")
             node_type = next(iter(item.labels), "Unknown")
+            style, role = node_style(item, role_map, color_by)
+
             title_lines = [f"{node_type}: {label}"]
+            if role:
+                title_lines.append(f"Role: {role}")
             if item.get("pageRankScore") is not None:
                 title_lines.append(f"Influence (PageRank): {item.get('pageRankScore'):.3f}")
             if item.get("betweennessScore") is not None:
@@ -175,11 +253,11 @@ def render_graph(records, color_by="Entity type", height=650):
                 title_lines.append(f"Cell/Community: {item.get('community')}")
             if item.get("anomalyFlag"):
                 title_lines.append(f"⚠ FLAGGED: {item.get('anomalyFlag')}")
-            size = 15
-            if item.get("pageRankScore") is not None:
-                size = item.get("pageRankScore")  # vis.js scales via 'value' automatically
+
             net.add_node(node_id, label=label, title="\n".join(title_lines),
-                         color=node_color(item), value=size)
+                         shape=style["shape"], color=style["color"],
+                         size=style["size"], borderWidth=style["borderWidth"],
+                         level=style["level"])
             added_nodes.add(node_id)
 
     for item in all_items:
@@ -189,19 +267,31 @@ def render_graph(records, color_by="Entity type", height=650):
                 net.add_edge(item.start_node.element_id, item.end_node.element_id,
                              title=f"{item.type}  {date_info}", color="#555555", width=1)
 
-    net.set_options("""
-    {
-      "nodes": {"scaling": {"min": 12, "max": 42}, "font": {"size": 14}},
-      "physics": {"stabilization": {"enabled": true, "iterations": 250}},
-      "interaction": {"hover": true, "navigationButtons": true, "keyboard": true}
-    }
-    """)
+    if layout == "Hierarchical (by role)":
+        options = """
+        {
+          "nodes": {"font": {"size": 14}},
+          "layout": {"hierarchical": {"enabled": true, "direction": "UD",
+                     "sortMethod": "directed", "levelSeparation": 160, "nodeSpacing": 140}},
+          "physics": {"hierarchicalRepulsion": {"nodeDistance": 140}, "solver": "hierarchicalRepulsion",
+                      "stabilization": {"enabled": true, "iterations": 250}},
+          "interaction": {"hover": true, "navigationButtons": true, "keyboard": true}
+        }
+        """
+    else:
+        net.barnes_hut(gravity=-4000, central_gravity=0.35, spring_length=110, spring_strength=0.045, damping=0.15)
+        options = """
+        {
+          "nodes": {"font": {"size": 14}},
+          "physics": {"stabilization": {"enabled": true, "iterations": 250}},
+          "interaction": {"hover": true, "navigationButtons": true, "keyboard": true}
+        }
+        """
+    net.set_options(options)
 
     net.save_graph("_graph.html")
     with open("_graph.html", "r", encoding="utf-8") as f:
         html = f.read()
-    # Best-effort: auto-fit the view once physics settles, so the user isn't
-    # forced to manually zoom out to see the whole graph.
     html = html.replace(
         "</body>",
         "<script>network.once('stabilizationIterationsDone', function() { network.fit({animation:true}); });</script></body>"
@@ -210,14 +300,17 @@ def render_graph(records, color_by="Entity type", height=650):
 
 
 def render_legend(color_by):
-    items = ENTITY_COLORS.items() if color_by == "Entity type" else \
-        [(f"Community {i}", c) for i, c in enumerate(COMMUNITY_PALETTE[:4])]
-    html = "".join(
-        f'<span class="legend-item"><span class="legend-dot" style="background:{color}"></span>{name}</span>'
-        for name, color in items
-    )
-    html += f'<span class="legend-item"><span class="legend-dot" style="background:{ANOMALY_COLOR}"></span>⚠ Flagged anomaly</span>'
-    st.markdown(html, unsafe_allow_html=True)
+    parts = []
+    for role, style in ROLE_STYLE.items():
+        parts.append(f'<span class="legend-item"><span class="legend-glyph" style="color:{style["color"]}">{style["glyph"]}</span>{role}</span>')
+    if color_by == "Entity type":
+        for etype, style in TYPE_STYLE.items():
+            parts.append(f'<span class="legend-item"><span class="legend-glyph" style="color:{style["color"]}">{style["glyph"]}</span>{etype}</span>')
+    else:
+        for i, c in enumerate(COMMUNITY_PALETTE[:4]):
+            parts.append(f'<span class="legend-item"><span class="legend-glyph" style="color:{c}">●</span>Community {i}</span>')
+    parts.append(f'<span class="legend-item"><span class="legend-glyph" style="color:{ANOMALY_COLOR}">⚠</span>Flagged anomaly</span>')
+    st.markdown("".join(parts), unsafe_allow_html=True)
 
 
 # ------------------------------------------------------------------ Hero ---
@@ -259,6 +352,7 @@ tab1, tab2, tab3, tab4 = st.tabs(
 with tab1:
     people = run_query("MATCH (p:Person) RETURN p.name AS name ORDER BY name")
     names = [p["name"] for p in people]
+    role_map = compute_roles()
 
     with st.container(border=True):
         col_a, col_b = st.columns([2, 1])
@@ -266,6 +360,14 @@ with tab1:
             view_mode = st.radio("View", ["Whole network", "Specific person", "Specific community", "Path between two people"], horizontal=True)
         with col_b:
             color_by = st.radio("Color by", ["Entity type", "Community"], horizontal=True)
+
+        col_c, col_d = st.columns([1, 1])
+        with col_c:
+            layout = st.radio("Layout", ["Force-directed", "Hierarchical (by role)"], horizontal=True,
+                               help="Hierarchical places Kingpins at the top, Intermediaries below them, and Associates at the bottom.")
+        with col_d:
+            people_only = st.checkbox("People only (hide locations/orgs/phones/vehicles)",
+                                       value=(layout == "Hierarchical (by role)"))
 
         selected_person = None
         selected_comm = None
@@ -281,17 +383,17 @@ with tab1:
                 start, end = st.select_slider("Date range", options=all_dates, value=(all_dates[0], all_dates[-1]))
                 date_range = (start, end)
 
-        records = []
         if view_mode == "Path between two people":
             p1 = st.selectbox("From", names, key="path_from")
             p2 = st.selectbox("To", [n for n in names if n != p1], key="path_to")
             if st.button("Find connection path"):
-                records = run_query_raw(
-                    "MATCH path = shortestPath((a:Person {name:$p1})-[*..6]-(b:Person {name:$p2})) RETURN path",
-                    {"p1": p1, "p2": p2},
-                )
-                if not records:
+                path_records, error = find_shortest_path(p1, p2)
+                st.session_state["path_result"] = path_records
+                if error:
+                    st.error(f"Query failed: {error}")
+                elif not path_records:
                     st.warning("No connection path found between these two people.")
+            records = st.session_state.get("path_result", [])
         else:
             if view_mode == "Specific person":
                 selected_person = st.selectbox("Select a person", names)
@@ -300,16 +402,15 @@ with tab1:
                 comm_ids = [c["community"] for c in communities if c["community"] is not None]
                 selected_comm = st.selectbox("Select a community/cell", comm_ids)
 
-        query, params = build_graph_query(view_mode, selected_person, selected_comm, date_range)
-        records = run_query_raw(query, params)
+            query, params = build_graph_query(view_mode, selected_person, selected_comm, date_range, people_only)
+            records = run_query_raw(query, params)
 
     if records:
         render_legend(color_by)
-        render_graph(records, color_by=color_by)
+        render_graph(records, role_map, color_by=color_by, layout=layout)
     else:
         st.info("No data to display for this selection yet — try adjusting the filters above.")
 
-    # Person detail side panel
     if view_mode == "Specific person" and selected_person:
         detail = run_query("""
             MATCH (p:Person {name: $name})
@@ -318,7 +419,9 @@ with tab1:
         """, {"name": selected_person})
         if detail:
             d = detail[0]
-            c1, c2, c3, c4 = st.columns(4)
+            role = role_map.get(selected_person, "Associate")
+            c0, c1, c2, c3, c4 = st.columns(5)
+            c0.metric("Role", role)
             c1.metric("Influence (PageRank)", f"{d['influence']:.3f}" if d["influence"] else "—")
             c2.metric("Bridge Score", f"{d['bridge_score']:.2f}" if d["bridge_score"] else "—")
             c3.metric("Cell/Community", d["community"] if d["community"] is not None else "—")
