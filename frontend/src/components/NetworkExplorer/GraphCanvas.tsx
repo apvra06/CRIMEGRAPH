@@ -110,7 +110,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         ...options,
         physics: {
           barnesHut: {
-            gravity: -4000,
+            gravitationalConstant: -4000,
             centralGravity: 0.35,
             springLength: 110,
             springConstant: 0.045,

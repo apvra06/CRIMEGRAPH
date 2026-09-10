@@ -166,6 +166,7 @@ def get_graph_data(
 
         added_nodes = {}
         added_edges = []
+        added_edge_ids = set()
 
         def flatten(rec):
             for val in rec.values():
@@ -222,6 +223,14 @@ def get_graph_data(
                 tgt_id = str(item.end_node.element_id)
                 if src_id in added_nodes and tgt_id in added_nodes:
                     edge_id = str(item.element_id)
+
+                    # Neo4j undirected MATCH can return the same relationship
+                    # from both directions. Keep each relationship only once.
+                    if edge_id in added_edge_ids:
+                        continue
+
+                    added_edge_ids.add(edge_id)
+
                     date_info = item.get("date") or item.get("timestamp") or ""
                     added_edges.append(GraphEdge(
                         id=edge_id,
