@@ -10,11 +10,10 @@ from typing import Dict, Iterable, List
 # Canonical display name -> all known source identifiers for that person.
 CANONICAL_PERSON_ALIASES: Dict[str, List[str]] = {
     "Amit Verma": ["Amit Verma", "A. Verma", "@amit_13"],
-    "Vicky Singh": ["Vicky Singh", "V. Singh"],
     "Rahul Sharma": ["Rahul Sharma", "Rahul S.", "R. Sharma", "@rahul_91"],
     "Sanjay Mehta": ["Sanjay Mehta", "S. Mehta", "Sanjay M.", "@sanjay_23"],
     "Ravi Kumar": ["Ravi Kumar", "R. Kumar", "@ravi_27"],
-    "Vikram Singh": ["Vikram Singh", "@vikram_24"],
+    "Vikram Singh": ["Vikram Singh","V. Singh","Vicky Singh","@vikram_24",],
     "Suresh Yadav": ["Suresh Yadav", "Suresh Y.", "S. Yadav"],
     "Deepak Rao": ["Deepak Rao", "D. Rao"],
     "Manoj Tiwari": ["Manoj Tiwari", "Manoj T.", "M. Tiwari", "@manoj_38"],
