@@ -5,6 +5,7 @@ from typing import Dict, List, Optional, Tuple, Any
 from app.database import check_connection, run_query, run_query_raw
 from app.schemas import GraphNode, GraphEdge, GraphResponse, NodeStyle, PersonDetail
 from app.services.mock_data import mock_store
+from app.services.identity import aliases_for_person, canonical_person_name
 
 logger = logging.getLogger("crime_analyst.graph_service")
 
@@ -38,7 +39,10 @@ ANOMALY_COLOR = ALERT
 def compute_roles() -> Dict[str, str]:
     if not check_connection():
         mock_store.initialize()
-        return mock_store.role_map
+        return {
+            canonical_person_name(name): role
+            for name, role in mock_store.role_map.items()
+        }
 
     try:
         rows = run_query("""
@@ -49,24 +53,38 @@ def compute_roles() -> Dict[str, str]:
         if not rows:
             return {}
 
-        best_in_community = {}
+        # Resolve aliases before determining leadership/intermediary roles.
+        canonical_rows = {}
         for r in rows:
-            comm = r["community"]
-            pr = r["pageRankScore"] or 0
+            raw_name = r.get("name")
+            if not raw_name:
+                continue
+            canonical = canonical_person_name(raw_name)
+            current = canonical_rows.get(canonical)
+            if current is None or raw_name == canonical or (
+                current.get("name") != canonical
+                and (r.get("pageRankScore") or 0) > (current.get("pageRankScore") or 0)
+            ):
+                canonical_rows[canonical] = {**r, "name": canonical}
+
+        best_in_community = {}
+        for r in canonical_rows.values():
+            comm = r.get("community")
+            pr = r.get("pageRankScore") or 0
             if comm not in best_in_community or pr > best_in_community[comm][1]:
                 best_in_community[comm] = (r["name"], pr)
         kingpins = {name for name, _ in best_in_community.values()}
 
-        scores = [r["betweennessScore"] or 0 for r in rows]
+        scores = [r.get("betweennessScore") or 0 for r in canonical_rows.values()]
         mean_b = statistics.mean(scores) if scores else 0
         std_b = statistics.pstdev(scores) if scores else 0
         threshold_b = mean_b + std_b
 
         roles = {}
-        for r in rows:
+        for r in canonical_rows.values():
             if r["name"] in kingpins:
                 roles[r["name"]] = "Kingpin"
-            elif threshold_b > 0 and (r["betweennessScore"] or 0) >= threshold_b:
+            elif threshold_b > 0 and (r.get("betweennessScore") or 0) >= threshold_b:
                 roles[r["name"]] = "Intermediary"
             else:
                 roles[r["name"]] = "Associate"
@@ -74,7 +92,10 @@ def compute_roles() -> Dict[str, str]:
     except Exception as e:
         logger.error("Failed to compute roles from Neo4j: %s. Falling back to mock store.", e)
         mock_store.initialize()
-        return mock_store.role_map
+        return {
+            canonical_person_name(name): role
+            for name, role in mock_store.role_map.items()
+        }
 
 
 def format_node_style(node_type: str, role: Optional[str], community: Optional[int], anomaly_flag: Optional[str], color_by: str) -> NodeStyle:
@@ -137,8 +158,28 @@ def get_graph_data(
         )
 
     try:
-        where_clauses = []
+        person_rows = run_query("""
+            MATCH (p:Person)
+            RETURN p.name AS name, p.community AS community,
+                   p.pageRankScore AS pageRankScore,
+                   p.betweennessScore AS betweennessScore,
+                   p.anomalyFlag AS anomalyFlag
+        """)
+
+        canonical_person_data = {}
+        raw_person_names = []
+        for row in person_rows:
+            raw_name = row.get("name")
+            if not raw_name:
+                continue
+            raw_person_names.append(raw_name)
+            canonical = canonical_person_name(raw_name)
+            current = canonical_person_data.get(canonical)
+            if current is None or raw_name == canonical:
+                canonical_person_data[canonical] = row
+
         params = {}
+        where_clauses = []
         if start_date and end_date:
             where_clauses.append(
                 "((r.date IS NOT NULL AND left(r.date,10) >= $start AND left(r.date,10) <= $end) "
@@ -147,12 +188,23 @@ def get_graph_data(
             params["start"], params["end"] = start_date, end_date
 
         m_label = ":Person" if people_only else ""
+
         if view_mode == "Specific person":
-            base = f"MATCH (n:Person {{name: $name}})-[r]-(m{m_label})"
-            params["name"] = selected_person
+            canonical_selected = canonical_person_name(selected_person or "")
+            selected_names = aliases_for_person(canonical_selected)
+            if selected_person and selected_person not in selected_names:
+                selected_names.append(selected_person)
+            base = f"MATCH (n:Person)-[r]-(m{m_label})"
+            where_clauses.insert(0, "n.name IN $selected_names")
+            params["selected_names"] = selected_names
         elif view_mode == "Specific community":
-            base = f"MATCH (n:Person {{community: $comm}})-[r]-(m{m_label})"
-            params["comm"] = selected_comm
+            community_names = [
+                raw for raw in raw_person_names
+                if canonical_person_data.get(canonical_person_name(raw), {}).get("community") == selected_comm
+            ]
+            base = f"MATCH (n:Person)-[r]-(m{m_label})"
+            where_clauses.insert(0, "n.name IN $community_names")
+            params["community_names"] = community_names
         else:
             n_label = ":Person" if people_only else ""
             base = f"MATCH (n{n_label})-[r]-(m{m_label})"
@@ -163,10 +215,10 @@ def get_graph_data(
         query += " RETURN n, r, m LIMIT 300"
 
         records = run_query_raw(query, params)
-
         added_nodes = {}
         added_edges = []
         added_edge_ids = set()
+        raw_node_to_display_id = {}
 
         def flatten(rec):
             for val in rec.values():
@@ -179,76 +231,82 @@ def get_graph_data(
         all_items = [item for rec in records for item in flatten(rec)]
 
         for item in all_items:
-            if hasattr(item, "labels"):
-                node_id = str(item.element_id)
-                if node_id in added_nodes:
-                    continue
-                node_name = item.get("name", "Unknown")
-                node_type = next(iter(item.labels), "Unknown")
-                role = role_map.get(node_name) if node_type == "Person" else None
+            if not hasattr(item, "labels"):
+                continue
+
+            raw_element_id = str(item.element_id)
+            node_type = next(iter(item.labels), "Unknown")
+            raw_name = item.get("name", "Unknown")
+
+            if node_type == "Person":
+                node_name = canonical_person_name(raw_name)
+                raw_node_to_display_id[raw_element_id] = node_name
+                source_data = canonical_person_data.get(node_name, item)
+                role = role_map.get(node_name)
+                community = source_data.get("community")
+                page_rank = source_data.get("pageRankScore")
+                betweenness = source_data.get("betweennessScore")
+                anomaly_flag = source_data.get("anomalyFlag")
+                node_id = node_name
+            else:
+                node_id = raw_element_id
+                raw_node_to_display_id[raw_element_id] = node_id
+                role = None
                 community = item.get("community")
+                page_rank = item.get("pageRankScore")
+                betweenness = item.get("betweennessScore")
                 anomaly_flag = item.get("anomalyFlag")
+                node_name = raw_name
 
-                style = format_node_style(node_type, role, community, anomaly_flag, color_by)
+            if node_id in added_nodes:
+                continue
 
-                title_lines = [f"{node_type}: {node_name}"]
-                if role:
-                    title_lines.append(f"Role: {role}")
-                if item.get("pageRankScore") is not None:
-                    title_lines.append(f"Influence (PageRank): {item.get('pageRankScore'):.3f}")
-                if item.get("betweennessScore") is not None:
-                    title_lines.append(f"Bridge score: {item.get('betweennessScore'):.2f}")
-                if community is not None:
-                    title_lines.append(f"Cell/Community: {community}")
-                if anomaly_flag:
-                    title_lines.append(f"⚠ FLAGGED: {anomaly_flag}")
+            style = format_node_style(node_type, role, community, anomaly_flag, color_by)
+            title_lines = [f"{node_type}: {node_name}"]
+            if role:
+                title_lines.append(f"Role: {role}")
+            if page_rank is not None:
+                title_lines.append(f"Influence (PageRank): {page_rank:.3f}")
+            if betweenness is not None:
+                title_lines.append(f"Bridge score: {betweenness:.2f}")
+            if community is not None:
+                title_lines.append(f"Cell/Community: {community}")
+            if anomaly_flag:
+                title_lines.append(f"⚠ FLAGGED: {anomaly_flag}")
 
-                added_nodes[node_id] = GraphNode(
-                    id=node_id,
-                    label=node_name,
-                    type=node_type,
-                    role=role,
-                    pageRankScore=item.get("pageRankScore"),
-                    betweennessScore=item.get("betweennessScore"),
-                    community=community,
-                    anomalyFlag=anomaly_flag,
-                    title="\n".join(title_lines),
-                    style=style,
-                    level=style.level
-                )
+            added_nodes[node_id] = GraphNode(
+                id=node_id, label=node_name, type=node_type, role=role,
+                pageRankScore=page_rank, betweennessScore=betweenness,
+                community=community, anomalyFlag=anomaly_flag,
+                title="\n".join(title_lines), style=style, level=style.level
+            )
 
         for item in all_items:
-            if hasattr(item, "type") and hasattr(item, "start_node"):
-                src_id = str(item.start_node.element_id)
-                tgt_id = str(item.end_node.element_id)
-                if src_id in added_nodes and tgt_id in added_nodes:
-                    edge_id = str(item.element_id)
+            if not (hasattr(item, "type") and hasattr(item, "start_node")):
+                continue
 
-                    # Neo4j undirected MATCH can return the same relationship
-                    # from both directions. Keep each relationship only once.
-                    if edge_id in added_edge_ids:
-                        continue
+            src_id = raw_node_to_display_id.get(str(item.start_node.element_id))
+            tgt_id = raw_node_to_display_id.get(str(item.end_node.element_id))
+            if not src_id or not tgt_id or src_id not in added_nodes or tgt_id not in added_nodes:
+                continue
+            if src_id == tgt_id:
+                continue
 
-                    added_edge_ids.add(edge_id)
+            edge_id = str(item.element_id)
+            if edge_id in added_edge_ids:
+                continue
+            added_edge_ids.add(edge_id)
 
-                    date_info = item.get("date") or item.get("timestamp") or ""
-                    added_edges.append(GraphEdge(
-                        id=edge_id,
-                        from_node=src_id,
-                        to_node=tgt_id,
-                        type=item.type,
-                        date=item.get("date"),
-                        timestamp=item.get("timestamp"),
-                        title=f"{item.type} {date_info}".strip(),
-                        color="#555555",
-                        width=1
-                    ))
+            date_info = item.get("date") or item.get("timestamp") or ""
+            added_edges.append(GraphEdge(
+                id=edge_id, from_node=src_id, to_node=tgt_id, type=item.type,
+                date=item.get("date"), timestamp=item.get("timestamp"),
+                title=f"{item.type} {date_info}".strip(), color="#555555", width=1
+            ))
 
         return GraphResponse(
-            nodes=list(added_nodes.values()),
-            edges=added_edges,
-            total_nodes=len(added_nodes),
-            total_edges=len(added_edges),
+            nodes=list(added_nodes.values()), edges=added_edges,
+            total_nodes=len(added_nodes), total_edges=len(added_edges),
             is_mock=False
         )
 
@@ -409,14 +467,21 @@ def find_shortest_path(p1: str, p2: str) -> Tuple[List[GraphNode], List[GraphEdg
             return [], [], f"No path found: {e}"
 
     # Using Neo4j
+    p1_canonical = canonical_person_name(p1)
+    p2_canonical = canonical_person_name(p2)
+    p1_names = aliases_for_person(p1_canonical)
+    p2_names = aliases_for_person(p2_canonical)
+
     queries = [
-        "MATCH path = SHORTEST 1 (a:Person {name: $p1})-[*..6]-(b:Person {name: $p2}) RETURN path",
-        "MATCH path = shortestPath((a:Person {name: $p1})-[*..6]-(b:Person {name: $p2})) RETURN path",
+        "MATCH path = SHORTEST 1 (a:Person)-[*..6]-(b:Person) "
+        "WHERE a.name IN $p1_names AND b.name IN $p2_names RETURN path",
+        "MATCH path = shortestPath((a:Person)-[*..6]-(b:Person)) "
+        "WHERE a.name IN $p1_names AND b.name IN $p2_names RETURN path",
     ]
     last_error = None
     for q in queries:
         try:
-            result = run_query_raw(q, {"p1": p1, "p2": p2})
+            result = run_query_raw(q, {"p1_names": p1_names, "p2_names": p2_names})
             if result:
                 # Format result
                 nodes_map = {}
@@ -424,30 +489,48 @@ def find_shortest_path(p1: str, p2: str) -> Tuple[List[GraphNode], List[GraphEdg
                 for rec in result:
                     path_obj = rec.get("path")
                     if path_obj:
+                        raw_to_display = {}
                         for n in path_obj.nodes:
-                            nid = str(n.element_id)
-                            nname = n.get("name", "Unknown")
+                            raw_id = str(n.element_id)
                             ntype = next(iter(n.labels), "Person")
+                            raw_name = n.get("name", "Unknown")
+                            nname = canonical_person_name(raw_name) if ntype == "Person" else raw_name
+                            nid = nname if ntype == "Person" else raw_id
+                            raw_to_display[raw_id] = nid
                             role = role_map.get(nname) if ntype == "Person" else None
-                            style = format_node_style(ntype, role, n.get("community"), n.get("anomalyFlag"), "Entity type")
+                            community = n.get("community")
+                            if ntype == "Person":
+                                canonical_detail = run_query("""
+                                    MATCH (p:Person {name: $name})
+                                    RETURN p.community AS community, p.pageRankScore AS pageRankScore,
+                                           p.betweennessScore AS betweennessScore, p.anomalyFlag AS anomalyFlag
+                                """, {"name": nname})
+                                if canonical_detail:
+                                    d = canonical_detail[0]
+                                    community = d.get("community")
+                                    npr = d.get("pageRankScore")
+                                    nbt = d.get("betweennessScore")
+                                    naf = d.get("anomalyFlag")
+                                else:
+                                    npr, nbt, naf = n.get("pageRankScore"), n.get("betweennessScore"), n.get("anomalyFlag")
+                            else:
+                                npr, nbt, naf = n.get("pageRankScore"), n.get("betweennessScore"), n.get("anomalyFlag")
+                            style = format_node_style(ntype, role, community, naf, "Entity type")
                             nodes_map[nid] = GraphNode(
-                                id=nid,
-                                label=nname,
-                                type=ntype,
-                                role=role,
-                                pageRankScore=n.get("pageRankScore"),
-                                betweennessScore=n.get("betweennessScore"),
-                                community=n.get("community"),
-                                anomalyFlag=n.get("anomalyFlag"),
-                                title=f"{ntype}: {nname}",
-                                style=style,
-                                level=style.level
+                                id=nid, label=nname, type=ntype, role=role,
+                                pageRankScore=npr, betweennessScore=nbt,
+                                community=community, anomalyFlag=naf,
+                                title=f"{ntype}: {nname}", style=style, level=style.level
                             )
                         for r in path_obj.relationships:
+                            src = raw_to_display.get(str(r.start_node.element_id))
+                            tgt = raw_to_display.get(str(r.end_node.element_id))
+                            if not src or not tgt or src == tgt:
+                                continue
                             edges_list.append(GraphEdge(
                                 id=str(r.element_id),
-                                from_node=str(r.start_node.element_id),
-                                to_node=str(r.end_node.element_id),
+                                from_node=src,
+                                to_node=tgt,
                                 type=r.type,
                                 title=r.type,
                                 color="#C99A3C",
@@ -464,14 +547,26 @@ def find_shortest_path(p1: str, p2: str) -> Tuple[List[GraphNode], List[GraphEdg
 def get_people_names() -> List[str]:
     if not check_connection():
         mock_store.initialize()
-        return sorted([n["name"] for n in mock_store.nodes.values() if n["type"] == "Person"])
+        return sorted({
+            canonical_person_name(n["name"])
+            for n in mock_store.nodes.values()
+            if n["type"] == "Person"
+        })
 
     try:
-        people = run_query("MATCH (p:Person) RETURN p.name AS name ORDER BY name")
-        return [p["name"] for p in people if p.get("name")]
+        people = run_query("MATCH (p:Person) RETURN p.name AS name")
+        return sorted({
+            canonical_person_name(p["name"])
+            for p in people
+            if p.get("name")
+        })
     except Exception:
         mock_store.initialize()
-        return sorted([n["name"] for n in mock_store.nodes.values() if n["type"] == "Person"])
+        return sorted({
+            canonical_person_name(n["name"])
+            for n in mock_store.nodes.values()
+            if n["type"] == "Person"
+        })
 
 
 def get_communities_list() -> List[int]:
@@ -481,8 +576,18 @@ def get_communities_list() -> List[int]:
         return sorted(list(comms))
 
     try:
-        res = run_query("MATCH (p:Person) RETURN DISTINCT p.community AS community ORDER BY community")
-        return [r["community"] for r in res if r.get("community") is not None]
+        rows = run_query("MATCH (p:Person) RETURN p.name AS name, p.community AS community")
+        canonical_rows = {}
+        for r in rows:
+            if not r.get("name"):
+                continue
+            canonical = canonical_person_name(r["name"])
+            if canonical not in canonical_rows or r["name"] == canonical:
+                canonical_rows[canonical] = r
+        return sorted({
+            r["community"] for r in canonical_rows.values()
+            if r.get("community") is not None
+        })
     except Exception:
         mock_store.initialize()
         comms = {n.get("community") for n in mock_store.nodes.values() if n.get("community") is not None}
@@ -552,24 +657,36 @@ def get_person_detail(name: str) -> Optional[PersonDetail]:
         )
 
     try:
+        canonical = canonical_person_name(name)
+        names = aliases_for_person(canonical)
         detail = run_query("""
-            MATCH (p:Person {name: $name})
-            RETURN p.pageRankScore AS influence, p.betweennessScore AS bridge_score,
+            MATCH (p:Person)
+            WHERE p.name IN $names
+            RETURN p.name AS name, p.pageRankScore AS influence,
+                   p.betweennessScore AS bridge_score,
                    p.community AS community, p.anomalyFlag AS flag
-        """, {"name": name})
+        """, {"names": names})
         if not detail:
             return None
-        d = detail[0]
-        role = role_map.get(name, "Associate")
+
+        # Prefer the canonical source node for identity-level metrics.
+        d = next((row for row in detail if row.get("name") == canonical), detail[0])
+        role = role_map.get(canonical, "Associate")
 
         connections = run_query("""
-            MATCH (p:Person {name: $name})-[r]-(m)
+            MATCH (p:Person)-[r]-(m)
+            WHERE p.name IN $names
             RETURN m.name AS entity, labels(m)[0] AS type, type(r) AS relationship
             LIMIT 25
-        """, {"name": name})
+        """, {"names": names})
+
+        # Never expose an alias as a connected Person entity.
+        for row in connections:
+            if row.get("type") == "Person":
+                row["entity"] = canonical_person_name(row.get("entity", ""))
 
         return PersonDetail(
-            name=name,
+            name=canonical,
             role=role,
             influence=d.get("influence"),
             bridge_score=d.get("bridge_score"),
