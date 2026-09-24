@@ -2,7 +2,345 @@
   {
     "doc_id": "FIR-1000",
     "date": "2026-07-01 00:00:00",
-    "text": "Case registered under Section 34 IPC. Suspect R. Kumar was seen near Malviya Nagar with vehicle MP04GH7890, contacted 9345678901.",
+    "text": "Case registered under Section 406 IPC. Suspect Amit Verma was seen near Rajwada with vehicle MP04CD9012, contacted +91 9988776655.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Amit Verma",
+        "label": "PERSON",
+        "resolved_text": "Amit Verma"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION",
+        "resolved_text": "Rajwada"
+      },
+      {
+        "text": "MP04CD9012",
+        "label": "VEHICLE",
+        "resolved_text": "MP04CD9012"
+      },
+      {
+        "text": "+91 9988776655",
+        "label": "PHONE",
+        "resolved_text": "9988776655",
+        "original_text": "+91 9988776655"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1001",
+    "date": "2026-07-02 00:00:00",
+    "text": "Case registered under Section 120B IPC. Complainant reported Neeraj Sharma and Y. Thakur meeting near Sudama Nagar on suspicious grounds.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Neeraj Sharma",
+        "label": "PERSON",
+        "resolved_text": "Neeraj Sharma"
+      },
+      {
+        "text": "Y. Thakur",
+        "label": "PERSON",
+        "resolved_text": "Yash Thakur",
+        "original_text": "Y. Thakur"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Sudama Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1002",
+    "date": "2026-07-03 00:00:00",
+    "text": "Case registered under Section 384 IPC. Suspect Manoj Tiwari was seen near Malviya Nagar with vehicle unknown, contacted +919765432109.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Manoj Tiwari",
+        "label": "PERSON",
+        "resolved_text": "Manoj Tiwari"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      },
+      {
+        "text": "+919765432109",
+        "label": "PHONE",
+        "resolved_text": "9765432109",
+        "original_text": "+919765432109"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1003",
+    "date": "2026-07-04 00:00:00",
+    "text": "Case registered under Section 406 IPC. A. Saxena aur P. Gupta Sudama Nagar mein mile the, dono ka phone number record kiya gaya hai.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "A. Saxena",
+        "label": "PERSON",
+        "resolved_text": "Ankit Saxena",
+        "original_text": "A. Saxena"
+      },
+      {
+        "text": "P. Gupta",
+        "label": "PERSON",
+        "resolved_text": "Pankaj Gupta",
+        "original_text": "P. Gupta"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Sudama Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1004",
+    "date": "2026-07-05 00:00:00",
+    "text": "Case registered under Section 420 IPC. Pankaj Gupta allegedly linked to Shree Traders, frequently seen at Vijay Nagar.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Pankaj Gupta",
+        "label": "PERSON",
+        "resolved_text": "Pankaj Gupta"
+      },
+      {
+        "text": "Shree Traders",
+        "label": "ORGANIZATION",
+        "resolved_text": "Shree Traders"
+      },
+      {
+        "text": "Vijay Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Vijay Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1005",
+    "date": "2026-07-06 00:00:00",
+    "text": "Case registered under Section 406 IPC. Informant states M. Chauhan received a call from 9012345678 while at Rajwada.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "M. Chauhan",
+        "label": "PERSON",
+        "resolved_text": "Mohit Chauhan",
+        "original_text": "M. Chauhan"
+      },
+      {
+        "text": "9012345678",
+        "label": "PHONE",
+        "resolved_text": "9012345678",
+        "original_text": "9012345678"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION",
+        "resolved_text": "Rajwada"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1006",
+    "date": "2026-07-07 00:00:00",
+    "text": "Case registered under Section 34 IPC. Aditya Kapoor aur Rohit Bansal Malviya Nagar mein mile the, dono ka phone number record kiya gaya hai.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Aditya Kapoor",
+        "label": "PERSON",
+        "resolved_text": "Aditya Kapoor"
+      },
+      {
+        "text": "Rohit Bansal",
+        "label": "PERSON",
+        "resolved_text": "Rohit Bansal"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1007",
+    "date": "2026-07-08 00:00:00",
+    "text": "Case registered under Section 420 IPC. Deepak Rao aur M. Tiwari Sudama Nagar mein mile the, dono ka phone number record kiya gaya hai.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Deepak Rao",
+        "label": "PERSON",
+        "resolved_text": "Deepak Rao"
+      },
+      {
+        "text": "M. Tiwari",
+        "label": "PERSON",
+        "resolved_text": "Manoj Tiwari",
+        "original_text": "M. Tiwari"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Sudama Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1008",
+    "date": "2026-07-09 00:00:00",
+    "text": "Case registered under Section 420 IPC. Arjun Patel aur Suresh Yadav Bhawarkuan mein mile the, dono ka phone number record kiya gaya hai.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Arjun Patel",
+        "label": "PERSON",
+        "resolved_text": "Arjun Patel"
+      },
+      {
+        "text": "Suresh Yadav",
+        "label": "PERSON",
+        "resolved_text": "Suresh Yadav"
+      },
+      {
+        "text": "Bhawarkuan",
+        "label": "LOCATION",
+        "resolved_text": "Bhawarkuan"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1009",
+    "date": "2026-07-10 00:00:00",
+    "text": "Case registered under Section 120B IPC. Nitin Joshi allegedly linked to Shree Traders, frequently seen at Vijay Nagar.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Nitin Joshi",
+        "label": "PERSON",
+        "resolved_text": "Nitin Joshi"
+      },
+      {
+        "text": "Shree Traders",
+        "label": "ORGANIZATION",
+        "resolved_text": "Shree Traders"
+      },
+      {
+        "text": "Vijay Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Vijay Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1010",
+    "date": "2026-07-11 00:00:00",
+    "text": "Case registered under Section 384 IPC. Gaurav Sethi allegedly linked to Shree Traders, frequently seen at Sudama Nagar.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Gaurav Sethi",
+        "label": "PERSON",
+        "resolved_text": "Gaurav Sethi"
+      },
+      {
+        "text": "Shree Traders",
+        "label": "ORGANIZATION",
+        "resolved_text": "Shree Traders"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Sudama Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1011",
+    "date": "2026-07-12 00:00:00",
+    "text": "Case registered under Section 406 IPC. Informant states V. Mehra received a call from +919876543210 while at Sudama Nagar.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "V. Mehra",
+        "label": "PERSON",
+        "resolved_text": "Varun Mehra",
+        "original_text": "V. Mehra"
+      },
+      {
+        "text": "+919876543210",
+        "label": "PHONE",
+        "resolved_text": "9876543210",
+        "original_text": "+919876543210"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Sudama Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1012",
+    "date": "2026-07-13 00:00:00",
+    "text": "Case registered under Section 34 IPC. Complainant reported Rahul S. and Karan Malhotra meeting near Malviya Nagar on suspicious grounds.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Rahul S.",
+        "label": "PERSON",
+        "resolved_text": "Rahul Sharma",
+        "original_text": "Rahul S."
+      },
+      {
+        "text": "Karan Malhotra",
+        "label": "PERSON",
+        "resolved_text": "Karan Malhotra"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1013",
+    "date": "2026-07-14 00:00:00",
+    "text": "Case registered under Section 406 IPC. Pankaj Gupta allegedly linked to Balaji Enterprises, frequently seen at Rajwada.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Pankaj Gupta",
+        "label": "PERSON",
+        "resolved_text": "Pankaj Gupta"
+      },
+      {
+        "text": "Balaji Enterprises",
+        "label": "ORGANIZATION",
+        "resolved_text": "Balaji Enterprises"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION",
+        "resolved_text": "Rajwada"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1014",
+    "date": "2026-07-15 00:00:00",
+    "text": "Case registered under Section 120B IPC. Suspect R. Kumar was seen near Sudama Nagar with vehicle MP04GH7890, contacted 9345678901.",
     "source_type": "FIR",
     "entities": [
       {
@@ -12,9 +350,9 @@
         "original_text": "R. Kumar"
       },
       {
-        "text": "Malviya Nagar",
+        "text": "Sudama Nagar",
         "label": "LOCATION",
-        "resolved_text": "Malviya Nagar"
+        "resolved_text": "Sudama Nagar"
       },
       {
         "text": "MP04GH7890",
@@ -30,387 +368,45 @@
     ]
   },
   {
-    "doc_id": "FIR-1001",
-    "date": "2026-07-02 00:00:00",
-    "text": "Case registered under Section 384 IPC. Informant states Sanjay Mehta received a call from +91 9345678901 while at Rajwada.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Sanjay Mehta",
-        "label": "PERSON",
-        "resolved_text": "Sanjay Mehta"
-      },
-      {
-        "text": "+91 9345678901",
-        "label": "PHONE",
-        "resolved_text": "9345678901",
-        "original_text": "+91 9345678901"
-      },
-      {
-        "text": "Rajwada",
-        "label": "LOCATION",
-        "resolved_text": "Rajwada"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1002",
-    "date": "2026-07-03 00:00:00",
-    "text": "Case registered under Section 384 IPC. Informant states A. Verma received a call from 9123456780 while at Sudama Nagar.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "A. Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma",
-        "original_text": "A. Verma"
-      },
-      {
-        "text": "9123456780",
-        "label": "PHONE",
-        "resolved_text": "23456780",
-        "original_text": "9123456780"
-      },
-      {
-        "text": "Sudama Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Sudama Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1003",
-    "date": "2026-07-04 00:00:00",
-    "text": "Case registered under Section 406 IPC. Complainant reported Rahul Sharma and Amit Verma meeting near Vijay Nagar on suspicious grounds.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Rahul Sharma",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma"
-      },
-      {
-        "text": "Amit Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma"
-      },
-      {
-        "text": "Vijay Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Vijay Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1004",
-    "date": "2026-07-05 00:00:00",
-    "text": "Case registered under Section 406 IPC. Complainant reported Amit Verma and Vicky Singh meeting near Malviya Nagar on suspicious grounds.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Amit Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma"
-      },
-      {
-        "text": "Vicky Singh",
-        "label": "PERSON",
-        "resolved_text": "Vikram Singh",
-        "original_text": "Vicky Singh"
-      },
-      {
-        "text": "Malviya Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Malviya Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1005",
-    "date": "2026-07-06 00:00:00",
-    "text": "Case registered under Section 120B IPC. Rahul S. allegedly linked to Om Logistics, frequently seen at Vijay Nagar.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Rahul S.",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma",
-        "original_text": "Rahul S."
-      },
-      {
-        "text": "Om Logistics",
-        "label": "ORGANIZATION",
-        "resolved_text": "Om Logistics"
-      },
-      {
-        "text": "Vijay Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Vijay Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1006",
-    "date": "2026-07-07 00:00:00",
-    "text": "Case registered under Section 406 IPC. S. Mehta allegedly linked to Om Logistics, frequently seen at Sudama Nagar.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "S. Mehta",
-        "label": "PERSON",
-        "resolved_text": "Sanjay Mehta",
-        "original_text": "S. Mehta"
-      },
-      {
-        "text": "Om Logistics",
-        "label": "ORGANIZATION",
-        "resolved_text": "Om Logistics"
-      },
-      {
-        "text": "Sudama Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Sudama Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1007",
-    "date": "2026-07-08 00:00:00",
-    "text": "Case registered under Section 420 IPC. Sanjay Mehta aur Ravi Kumar Bhawarkuan mein mile the, dono ka phone number record kiya gaya hai.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Sanjay Mehta",
-        "label": "PERSON",
-        "resolved_text": "Sanjay Mehta"
-      },
-      {
-        "text": "Ravi Kumar",
-        "label": "PERSON",
-        "resolved_text": "Ravi Kumar"
-      },
-      {
-        "text": "Bhawarkuan",
-        "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1008",
-    "date": "2026-07-09 00:00:00",
-    "text": "Case registered under Section 120B IPC. Amit Verma allegedly linked to Shree Traders, frequently seen at Vijay Nagar.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Amit Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma"
-      },
-      {
-        "text": "Shree Traders",
-        "label": "ORGANIZATION",
-        "resolved_text": "Shree Traders"
-      },
-      {
-        "text": "Vijay Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Vijay Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1009",
-    "date": "2026-07-10 00:00:00",
-    "text": "Case registered under Section 384 IPC. Amit Verma allegedly linked to Balaji Enterprises, frequently seen at Malviya Nagar.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Amit Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma"
-      },
-      {
-        "text": "Balaji Enterprises",
-        "label": "ORGANIZATION",
-        "resolved_text": "Balaji Enterprises"
-      },
-      {
-        "text": "Malviya Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Malviya Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1010",
-    "date": "2026-07-11 00:00:00",
-    "text": "Case registered under Section 406 IPC. Suspect Rahul S. was seen near Vijay Nagar with vehicle MP09AB1234, contacted 9876543210.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Rahul S.",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma",
-        "original_text": "Rahul S."
-      },
-      {
-        "text": "Vijay Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Vijay Nagar"
-      },
-      {
-        "text": "MP09AB1234",
-        "label": "VEHICLE",
-        "resolved_text": "MP09AB1234"
-      },
-      {
-        "text": "9876543210",
-        "label": "PHONE",
-        "resolved_text": "9876543210",
-        "original_text": "9876543210"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1011",
-    "date": "2026-07-12 00:00:00",
-    "text": "Case registered under Section 34 IPC. Complainant reported Rahul S. and Vikram Singh meeting near Malviya Nagar on suspicious grounds.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Rahul S.",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma",
-        "original_text": "Rahul S."
-      },
-      {
-        "text": "Vikram Singh",
-        "label": "PERSON",
-        "resolved_text": "Vikram Singh"
-      },
-      {
-        "text": "Malviya Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Malviya Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1012",
-    "date": "2026-07-13 00:00:00",
-    "text": "Case registered under Section 384 IPC. Suresh Yadav allegedly linked to Om Logistics, frequently seen at Vijay Nagar.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Suresh Yadav",
-        "label": "PERSON",
-        "resolved_text": "Suresh Yadav"
-      },
-      {
-        "text": "Om Logistics",
-        "label": "ORGANIZATION",
-        "resolved_text": "Om Logistics"
-      },
-      {
-        "text": "Vijay Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Vijay Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1013",
-    "date": "2026-07-14 00:00:00",
-    "text": "Case registered under Section 406 IPC. Suspect R. Kumar was seen near Malviya Nagar with vehicle MP04GH7890, contacted +919345678901.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "R. Kumar",
-        "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "R. Kumar"
-      },
-      {
-        "text": "Malviya Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Malviya Nagar"
-      },
-      {
-        "text": "MP04GH7890",
-        "label": "VEHICLE",
-        "resolved_text": "MP04GH7890"
-      },
-      {
-        "text": "+919345678901",
-        "label": "PHONE",
-        "resolved_text": "9345678901",
-        "original_text": "+919345678901"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1014",
-    "date": "2026-07-15 00:00:00",
-    "text": "Case registered under Section 420 IPC. Complainant reported Sanjay M. and Ravi Kumar meeting near Bhawarkuan on suspicious grounds.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Sanjay M.",
-        "label": "PERSON",
-        "resolved_text": "Sanjay Mehta",
-        "original_text": "Sanjay M."
-      },
-      {
-        "text": "Ravi Kumar",
-        "label": "PERSON",
-        "resolved_text": "Ravi Kumar"
-      },
-      {
-        "text": "Bhawarkuan",
-        "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
-      }
-    ]
-  },
-  {
     "doc_id": "FIR-1015",
     "date": "2026-07-16 00:00:00",
-    "text": "Case registered under Section 120B IPC. Ravi Kumar allegedly linked to Balaji Enterprises, frequently seen at Bhawarkuan.",
+    "text": "Case registered under Section 120B IPC. Informant states M. Chauhan received a call from 9012345678 while at Sudama Nagar.",
     "source_type": "FIR",
     "entities": [
       {
-        "text": "Ravi Kumar",
+        "text": "M. Chauhan",
         "label": "PERSON",
-        "resolved_text": "Ravi Kumar"
+        "resolved_text": "Mohit Chauhan",
+        "original_text": "M. Chauhan"
       },
       {
-        "text": "Balaji Enterprises",
-        "label": "ORGANIZATION",
-        "resolved_text": "Balaji Enterprises"
+        "text": "9012345678",
+        "label": "PHONE",
+        "resolved_text": "9012345678",
+        "original_text": "9012345678"
       },
       {
-        "text": "Bhawarkuan",
+        "text": "Sudama Nagar",
         "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
+        "resolved_text": "Sudama Nagar"
       }
     ]
   },
   {
     "doc_id": "FIR-1016",
     "date": "2026-07-17 00:00:00",
-    "text": "Case registered under Section 406 IPC. Vikram Singh aur Rahul Sharma Malviya Nagar mein mile the, dono ka phone number record kiya gaya hai.",
+    "text": "Case registered under Section 120B IPC. Ankit Saxena allegedly linked to Om Logistics, frequently seen at Malviya Nagar.",
     "source_type": "FIR",
     "entities": [
       {
-        "text": "Vikram Singh",
+        "text": "Ankit Saxena",
         "label": "PERSON",
-        "resolved_text": "Vikram Singh"
+        "resolved_text": "Ankit Saxena"
       },
       {
-        "text": "Rahul Sharma",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma"
+        "text": "Om Logistics",
+        "label": "ORGANIZATION",
+        "resolved_text": "Om Logistics"
       },
       {
         "text": "Malviya Nagar",
@@ -422,20 +418,18 @@
   {
     "doc_id": "FIR-1017",
     "date": "2026-07-18 00:00:00",
-    "text": "Case registered under Section 384 IPC. Informant states Suresh Y. received a call from 9012345678 while at Malviya Nagar.",
+    "text": "Case registered under Section 406 IPC. Karan Malhotra aur Rahul Sharma Malviya Nagar mein mile the, dono ka phone number record kiya gaya hai.",
     "source_type": "FIR",
     "entities": [
       {
-        "text": "Suresh Y.",
+        "text": "Karan Malhotra",
         "label": "PERSON",
-        "resolved_text": "Suresh Yadav",
-        "original_text": "Suresh Y."
+        "resolved_text": "Karan Malhotra"
       },
       {
-        "text": "9012345678",
-        "label": "PHONE",
-        "resolved_text": "9012345678",
-        "original_text": "9012345678"
+        "text": "Rahul Sharma",
+        "label": "PERSON",
+        "resolved_text": "Rahul Sharma"
       },
       {
         "text": "Malviya Nagar",
@@ -447,7 +441,32 @@
   {
     "doc_id": "FIR-1018",
     "date": "2026-07-19 00:00:00",
-    "text": "Case registered under Section 34 IPC. Suspect Suresh Yadav was seen near Vijay Nagar with vehicle unknown, contacted 9871234560.",
+    "text": "Case registered under Section 384 IPC. Informant states V. Mehra received a call from 9531748620 while at Malviya Nagar.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "V. Mehra",
+        "label": "PERSON",
+        "resolved_text": "Varun Mehra",
+        "original_text": "V. Mehra"
+      },
+      {
+        "text": "9531748620",
+        "label": "PHONE",
+        "resolved_text": "9531748620",
+        "original_text": "9531748620"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1019",
+    "date": "2026-07-20 00:00:00",
+    "text": "Case registered under Section 34 IPC. Suspect Varun Mehra was seen near Vijay Nagar with vehicle MP04VM3498, contacted 9724681350.",
     "source_type": "FIR",
     "entities": [
       {
@@ -456,9 +475,14 @@
         "resolved_text": "IPC"
       },
       {
-        "text": "Suresh Yadav",
+        "text": "Suspect",
+        "label": "ORGANIZATION",
+        "resolved_text": "Suspect"
+      },
+      {
+        "text": "Varun Mehra",
         "label": "PERSON",
-        "resolved_text": "Suresh Yadav"
+        "resolved_text": "Varun Mehra"
       },
       {
         "text": "Vijay Nagar",
@@ -466,29 +490,34 @@
         "resolved_text": "Vijay Nagar"
       },
       {
-        "text": "9871234560",
+        "text": "MP04VM3498",
+        "label": "VEHICLE",
+        "resolved_text": "MP04VM3498"
+      },
+      {
+        "text": "9724681350",
         "label": "PHONE",
-        "resolved_text": "9871234560",
-        "original_text": "9871234560"
+        "resolved_text": "9724681350",
+        "original_text": "9724681350"
       }
     ]
   },
   {
-    "doc_id": "FIR-1019",
-    "date": "2026-07-20 00:00:00",
-    "text": "Case registered under Section 384 IPC. Complainant reported R. Kumar and Sanjay Mehta meeting near Sudama Nagar on suspicious grounds.",
+    "doc_id": "FIR-1020",
+    "date": "2026-07-21 00:00:00",
+    "text": "Case registered under Section 384 IPC. Complainant reported Y. Thakur and Neeraj Sharma meeting near Sudama Nagar on suspicious grounds.",
     "source_type": "FIR",
     "entities": [
       {
-        "text": "R. Kumar",
+        "text": "Y. Thakur",
         "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "R. Kumar"
+        "resolved_text": "Yash Thakur",
+        "original_text": "Y. Thakur"
       },
       {
-        "text": "Sanjay Mehta",
+        "text": "Neeraj Sharma",
         "label": "PERSON",
-        "resolved_text": "Sanjay Mehta"
+        "resolved_text": "Neeraj Sharma"
       },
       {
         "text": "Sudama Nagar",
@@ -498,9 +527,56 @@
     ]
   },
   {
-    "doc_id": "FIR-1020",
-    "date": "2026-07-21 00:00:00",
-    "text": "Case registered under Section 406 IPC. Ravi Kumar aur Sanjay Mehta Bhawarkuan mein mile the, dono ka phone number record kiya gaya hai.",
+    "doc_id": "FIR-1021",
+    "date": "2026-07-22 00:00:00",
+    "text": "Case registered under Section 406 IPC. Neeraj Sharma aur Gaurav Sethi Bhawarkuan mein mile the, dono ka phone number record kiya gaya hai.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Neeraj Sharma",
+        "label": "PERSON",
+        "resolved_text": "Neeraj Sharma"
+      },
+      {
+        "text": "Gaurav Sethi",
+        "label": "PERSON",
+        "resolved_text": "Gaurav Sethi"
+      },
+      {
+        "text": "Bhawarkuan",
+        "label": "LOCATION",
+        "resolved_text": "Bhawarkuan"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1022",
+    "date": "2026-07-23 00:00:00",
+    "text": "Case registered under Section 384 IPC. Suspect Manoj Tiwari was seen near Vijay Nagar with vehicle unknown, contacted 9765432109.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Manoj Tiwari",
+        "label": "PERSON",
+        "resolved_text": "Manoj Tiwari"
+      },
+      {
+        "text": "Vijay Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Vijay Nagar"
+      },
+      {
+        "text": "9765432109",
+        "label": "PHONE",
+        "resolved_text": "9765432109",
+        "original_text": "9765432109"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1023",
+    "date": "2026-07-24 00:00:00",
+    "text": "Case registered under Section 384 IPC. Complainant reported Ravi Kumar and Sanjay Mehta meeting near Vijay Nagar on suspicious grounds.",
     "source_type": "FIR",
     "entities": [
       {
@@ -514,173 +590,6 @@
         "resolved_text": "Sanjay Mehta"
       },
       {
-        "text": "Bhawarkuan",
-        "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1021",
-    "date": "2026-07-22 00:00:00",
-    "text": "Case registered under Section 420 IPC. Suspect A. Verma was seen near Bhawarkuan with vehicle MP04CD9012, contacted 9988776655.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "A. Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma",
-        "original_text": "A. Verma"
-      },
-      {
-        "text": "Bhawarkuan",
-        "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
-      },
-      {
-        "text": "MP04CD9012",
-        "label": "VEHICLE",
-        "resolved_text": "MP04CD9012"
-      },
-      {
-        "text": "9988776655",
-        "label": "PHONE",
-        "resolved_text": "9988776655",
-        "original_text": "9988776655"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1022",
-    "date": "2026-07-23 00:00:00",
-    "text": "Case registered under Section 120B IPC. Deepak Rao allegedly linked to Balaji Enterprises, frequently seen at Bhawarkuan.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Deepak Rao",
-        "label": "PERSON",
-        "resolved_text": "Deepak Rao"
-      },
-      {
-        "text": "Balaji Enterprises",
-        "label": "ORGANIZATION",
-        "resolved_text": "Balaji Enterprises"
-      },
-      {
-        "text": "Bhawarkuan",
-        "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1023",
-    "date": "2026-07-24 00:00:00",
-    "text": "Case registered under Section 120B IPC. Rahul S. aur Vikram Singh Malviya Nagar mein mile the, dono ka phone number record kiya gaya hai.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Rahul S.",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma",
-        "original_text": "Rahul S."
-      },
-      {
-        "text": "Vikram Singh",
-        "label": "PERSON",
-        "resolved_text": "Vikram Singh"
-      },
-      {
-        "text": "Malviya Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Malviya Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1024",
-    "date": "2026-07-25 00:00:00",
-    "text": "Case registered under Section 34 IPC. Suspect S. Yadav was seen near Bhawarkuan with vehicle unknown, contacted 98712-34560.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "S. Yadav",
-        "label": "PERSON",
-        "resolved_text": "Suresh Yadav",
-        "original_text": "S. Yadav"
-      },
-      {
-        "text": "Bhawarkuan",
-        "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1025",
-    "date": "2026-07-26 00:00:00",
-    "text": "Case registered under Section 420 IPC. Unverified tip: Rahul Sharma possibly seen with unidentified individual named Farhan Qureshi near Malviya Nagar.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Rahul Sharma",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma"
-      },
-      {
-        "text": "Farhan Qureshi",
-        "label": "PERSON",
-        "resolved_text": "Farhan Qureshi"
-      },
-      {
-        "text": "Malviya Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Malviya Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "FIR-1026",
-    "date": "2026-07-27 00:00:00",
-    "text": "Case registered under Section 420 IPC. Unverified tip: Amit Verma possibly seen with unidentified individual named Priya Nair near Sudama Nagar.",
-    "source_type": "FIR",
-    "entities": [
-      {
-        "text": "Amit Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma"
-      },
-      {
-        "text": "Priya Nair",
-        "label": "PERSON",
-        "resolved_text": "Priya Nair"
-      },
-      {
-        "text": "Sudama Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Sudama Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "SURV-2000",
-    "date": "2026-07-27 02:00:00",
-    "text": "Field team tracked Manoj T. to a meeting with D. Rao at Vijay Nagar; no physical exchange observed.",
-    "source_type": "SURVEILLANCE",
-    "entities": [
-      {
-        "text": "Manoj T.",
-        "label": "PERSON",
-        "resolved_text": "Manoj Tiwari",
-        "original_text": "Manoj T."
-      },
-      {
-        "text": "D. Rao",
-        "label": "PERSON",
-        "resolved_text": "Deepak Rao",
-        "original_text": "D. Rao"
-      },
-      {
         "text": "Vijay Nagar",
         "label": "LOCATION",
         "resolved_text": "Vijay Nagar"
@@ -688,72 +597,21 @@
     ]
   },
   {
-    "doc_id": "SURV-2001",
-    "date": "2026-07-20 20:00:00",
-    "text": "Subject Vikram Singh observed entering premises near Rajwada at approx 17:00, departed after 12 minutes.",
-    "source_type": "SURVEILLANCE",
+    "doc_id": "FIR-1024",
+    "date": "2026-07-25 00:00:00",
+    "text": "Case registered under Section 120B IPC. Vicky Singh aur Amit Verma Malviya Nagar mein mile the, dono ka phone number record kiya gaya hai.",
+    "source_type": "FIR",
     "entities": [
       {
-        "text": "Vikram Singh",
+        "text": "Vicky Singh",
         "label": "PERSON",
-        "resolved_text": "Vikram Singh"
+        "resolved_text": "Vikram Singh",
+        "original_text": "Vicky Singh"
       },
       {
-        "text": "Rajwada",
-        "label": "LOCATION",
-        "resolved_text": "Rajwada"
-      }
-    ]
-  },
-  {
-    "doc_id": "SURV-2002",
-    "date": "2026-07-17 22:00:00",
-    "text": "Surveillance of Manoj T. inconclusive; subject appeared to evade tail.",
-    "source_type": "SURVEILLANCE",
-    "entities": [
-      {
-        "text": "Manoj T.",
+        "text": "Amit Verma",
         "label": "PERSON",
-        "resolved_text": "Manoj Tiwari",
-        "original_text": "Manoj T."
-      }
-    ]
-  },
-  {
-    "doc_id": "SURV-2003",
-    "date": "2026-07-03 11:00:00",
-    "text": "Field team tracked Rahul Sharma to a meeting with A. Verma at Rajwada; no physical exchange observed.",
-    "source_type": "SURVEILLANCE",
-    "entities": [
-      {
-        "text": "Rahul Sharma",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma"
-      },
-      {
-        "text": "A. Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma",
-        "original_text": "A. Verma"
-      },
-      {
-        "text": "Rajwada",
-        "label": "LOCATION",
-        "resolved_text": "Rajwada"
-      }
-    ]
-  },
-  {
-    "doc_id": "SURV-2004",
-    "date": "2026-07-21 00:00:00",
-    "text": "Subject A. Verma observed entering premises near Malviya Nagar at approx 21:00, departed after 12 minutes.",
-    "source_type": "SURVEILLANCE",
-    "entities": [
-      {
-        "text": "A. Verma",
-        "label": "PERSON",
-        "resolved_text": "Amit Verma",
-        "original_text": "A. Verma"
+        "resolved_text": "Amit Verma"
       },
       {
         "text": "Malviya Nagar",
@@ -763,16 +621,143 @@
     ]
   },
   {
-    "doc_id": "SURV-2005",
-    "date": "2026-07-19 21:00:00",
-    "text": "Subject D. Rao observed entering premises near Malviya Nagar at approx 14:00, departed after 74 minutes.",
+    "doc_id": "FIR-1025",
+    "date": "2026-07-26 00:00:00",
+    "text": "Case registered under Section 120B IPC. Unverified tip: Varun Mehra possibly seen with unidentified individual named Farhan Qureshi near Bhawarkuan.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Varun Mehra",
+        "label": "PERSON",
+        "resolved_text": "Varun Mehra"
+      },
+      {
+        "text": "Farhan Qureshi",
+        "label": "PERSON",
+        "resolved_text": "Farhan Qureshi"
+      },
+      {
+        "text": "Bhawarkuan",
+        "label": "LOCATION",
+        "resolved_text": "Bhawarkuan"
+      }
+    ]
+  },
+  {
+    "doc_id": "FIR-1026",
+    "date": "2026-07-27 00:00:00",
+    "text": "Case registered under Section 34 IPC. Unverified tip: Vikram Singh possibly seen with unidentified individual named Priya Nair near Malviya Nagar.",
+    "source_type": "FIR",
+    "entities": [
+      {
+        "text": "Vikram Singh",
+        "label": "PERSON",
+        "resolved_text": "Vikram Singh"
+      },
+      {
+        "text": "Priya Nair",
+        "label": "PERSON",
+        "resolved_text": "Priya Nair"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "SURV-2000",
+    "date": "2026-07-23 04:00:00",
+    "text": "Subject Neeraj Sharma observed entering premises near Malviya Nagar at approx 13:00, departed after 13 minutes.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "D. Rao",
+        "text": "Neeraj Sharma",
         "label": "PERSON",
-        "resolved_text": "Deepak Rao",
-        "original_text": "D. Rao"
+        "resolved_text": "Neeraj Sharma"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "SURV-2001",
+    "date": "2026-07-17 23:00:00",
+    "text": "Surveillance of Pankaj Gupta inconclusive; subject appeared to evade tail.",
+    "source_type": "SURVEILLANCE",
+    "entities": [
+      {
+        "text": "Pankaj Gupta",
+        "label": "PERSON",
+        "resolved_text": "Pankaj Gupta"
+      }
+    ]
+  },
+  {
+    "doc_id": "SURV-2002",
+    "date": "2026-07-20 16:00:00",
+    "text": "Subject Ravi Kumar observed entering premises near Rajwada at approx 13:00, departed after 29 minutes.",
+    "source_type": "SURVEILLANCE",
+    "entities": [
+      {
+        "text": "Ravi Kumar",
+        "label": "PERSON",
+        "resolved_text": "Ravi Kumar"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION",
+        "resolved_text": "Rajwada"
+      }
+    ]
+  },
+  {
+    "doc_id": "SURV-2003",
+    "date": "2026-07-22 02:00:00",
+    "text": "Surveillance of Aditya Kapoor inconclusive; subject appeared to evade tail.",
+    "source_type": "SURVEILLANCE",
+    "entities": [
+      {
+        "text": "Aditya Kapoor",
+        "label": "PERSON",
+        "resolved_text": "Aditya Kapoor"
+      }
+    ]
+  },
+  {
+    "doc_id": "SURV-2004",
+    "date": "2026-07-01 22:00:00",
+    "text": "Surveillance of Neeraj Sharma inconclusive; subject appeared to evade tail.",
+    "source_type": "SURVEILLANCE",
+    "entities": [
+      {
+        "text": "Neeraj Sharma",
+        "label": "PERSON",
+        "resolved_text": "Neeraj Sharma"
+      }
+    ]
+  },
+  {
+    "doc_id": "SURV-2005",
+    "date": "2026-07-19 21:00:00",
+    "text": "Field team tracked Pankaj G. to a meeting with A. Saxena at Malviya Nagar; no physical exchange observed.",
+    "source_type": "SURVEILLANCE",
+    "entities": [
+      {
+        "text": "Pankaj G.",
+        "label": "PERSON",
+        "resolved_text": "Pankaj Gupta",
+        "original_text": "Pankaj G."
+      },
+      {
+        "text": "A. Saxena",
+        "label": "PERSON",
+        "resolved_text": "Ankit Saxena",
+        "original_text": "A. Saxena"
       },
       {
         "text": "Malviya Nagar",
@@ -784,14 +769,14 @@
   {
     "doc_id": "SURV-2006",
     "date": "2026-07-11 12:00:00",
-    "text": "Subject S. Yadav observed entering premises near Bhawarkuan at approx 18:00, departed after 74 minutes.",
+    "text": "Subject R. Kumar observed entering premises near Bhawarkuan at approx 18:00, departed after 74 minutes.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "S. Yadav",
+        "text": "R. Kumar",
         "label": "PERSON",
-        "resolved_text": "Suresh Yadav",
-        "original_text": "S. Yadav"
+        "resolved_text": "Ravi Kumar",
+        "original_text": "R. Kumar"
       },
       {
         "text": "Bhawarkuan",
@@ -803,42 +788,41 @@
   {
     "doc_id": "SURV-2007",
     "date": "2026-07-01 20:00:00",
-    "text": "Surveillance of R. Kumar inconclusive; subject appeared to evade tail.",
+    "text": "Surveillance of N. Joshi inconclusive; subject appeared to evade tail.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "R. Kumar",
+        "text": "N. Joshi",
         "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "R. Kumar"
+        "resolved_text": "Nitin Joshi",
+        "original_text": "N. Joshi"
       }
     ]
   },
   {
     "doc_id": "SURV-2008",
     "date": "2026-07-03 08:00:00",
-    "text": "Surveillance of D. Rao inconclusive; subject appeared to evade tail.",
+    "text": "Surveillance of H. Vardhan inconclusive; subject appeared to evade tail.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "D. Rao",
+        "text": "H. Vardhan",
         "label": "PERSON",
-        "resolved_text": "Deepak Rao",
-        "original_text": "D. Rao"
+        "resolved_text": "Harsh Vardhan",
+        "original_text": "H. Vardhan"
       }
     ]
   },
   {
     "doc_id": "SURV-2009",
     "date": "2026-07-05 02:00:00",
-    "text": "Subject R. Kumar observed entering premises near Malviya Nagar at approx 14:00, departed after 18 minutes.",
+    "text": "Subject Arjun Patel observed entering premises near Malviya Nagar at approx 14:00, departed after 18 minutes.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "R. Kumar",
+        "text": "Arjun Patel",
         "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "R. Kumar"
+        "resolved_text": "Arjun Patel"
       },
       {
         "text": "Malviya Nagar",
@@ -849,59 +833,80 @@
   },
   {
     "doc_id": "SURV-2010",
-    "date": "2026-07-01 09:00:00",
-    "text": "Sanjay Mehta observed loading unmarked packages into vehicle an unmarked vehicle outside an undisclosed location.",
+    "date": "2026-07-10 13:00:00",
+    "text": "Subject Gaurav Sethi observed entering premises near an undisclosed location at approx 18:00, departed after 6 minutes.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "Sanjay Mehta",
+        "text": "Gaurav Sethi",
         "label": "PERSON",
-        "resolved_text": "Sanjay Mehta"
+        "resolved_text": "Gaurav Sethi"
       }
     ]
   },
   {
     "doc_id": "SURV-2011",
-    "date": "2026-07-03 05:00:00",
-    "text": "Surveillance of A. Verma inconclusive; subject appeared to evade tail.",
+    "date": "2026-07-14 08:00:00",
+    "text": "Field team tracked Y. Thakur to a meeting with Gaurav Sethi at Rajwada; no physical exchange observed.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "A. Verma",
+        "text": "Y. Thakur",
         "label": "PERSON",
-        "resolved_text": "Amit Verma",
-        "original_text": "A. Verma"
+        "resolved_text": "Yash Thakur",
+        "original_text": "Y. Thakur"
+      },
+      {
+        "text": "Gaurav Sethi",
+        "label": "PERSON",
+        "resolved_text": "Gaurav Sethi"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION",
+        "resolved_text": "Rajwada"
       }
     ]
   },
   {
     "doc_id": "SURV-2012",
-    "date": "2026-07-01 12:00:00",
-    "text": "Surveillance of Deepak Rao inconclusive; subject appeared to evade tail.",
+    "date": "2026-07-27 19:00:00",
+    "text": "Field team tracked Amit Verma to a meeting with N. Joshi at Bhawarkuan; no physical exchange observed.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "Deepak Rao",
+        "text": "Amit Verma",
         "label": "PERSON",
-        "resolved_text": "Deepak Rao"
+        "resolved_text": "Amit Verma"
+      },
+      {
+        "text": "N. Joshi",
+        "label": "PERSON",
+        "resolved_text": "Nitin Joshi",
+        "original_text": "N. Joshi"
+      },
+      {
+        "text": "Bhawarkuan",
+        "label": "LOCATION",
+        "resolved_text": "Bhawarkuan"
       }
     ]
   },
   {
     "doc_id": "SURV-2013",
     "date": "2026-07-11 05:00:00",
-    "text": "Field team tracked Deepak Rao to a meeting with Manoj Tiwari at Sudama Nagar; no physical exchange observed.",
+    "text": "Field team tracked Aditya Kapoor to a meeting with Rohit Bansal at Sudama Nagar; no physical exchange observed.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "Deepak Rao",
+        "text": "Aditya Kapoor",
         "label": "PERSON",
-        "resolved_text": "Deepak Rao"
+        "resolved_text": "Aditya Kapoor"
       },
       {
-        "text": "Manoj Tiwari",
+        "text": "Rohit Bansal",
         "label": "PERSON",
-        "resolved_text": "Manoj Tiwari"
+        "resolved_text": "Rohit Bansal"
       },
       {
         "text": "Sudama Nagar",
@@ -913,19 +918,19 @@
   {
     "doc_id": "SURV-2014",
     "date": "2026-07-19 06:00:00",
-    "text": "Field team tracked Deepak Rao to a meeting with Manoj T. at Bhawarkuan; no physical exchange observed.",
+    "text": "Field team tracked Mohit Chauhan to a meeting with V. Arora at Bhawarkuan; no physical exchange observed.",
     "source_type": "SURVEILLANCE",
     "entities": [
       {
-        "text": "Deepak Rao",
+        "text": "Mohit Chauhan",
         "label": "PERSON",
-        "resolved_text": "Deepak Rao"
+        "resolved_text": "Mohit Chauhan"
       },
       {
-        "text": "Manoj T.",
+        "text": "V. Arora",
         "label": "PERSON",
-        "resolved_text": "Manoj Tiwari",
-        "original_text": "Manoj T."
+        "resolved_text": "Vivek Arora",
+        "original_text": "V. Arora"
       },
       {
         "text": "Bhawarkuan",
@@ -937,19 +942,19 @@
   {
     "doc_id": "SOC-3000",
     "date": "2026-07-15 00:00:00",
-    "text": "seen Amit Verma aur M. Tiwari together near Sudama Nagar yesterday \ud83d\udc40",
+    "text": "seen Suresh Yadav aur Y. Thakur together near Sudama Nagar yesterday \ud83d\udc40",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "Amit Verma",
+        "text": "Suresh Yadav",
         "label": "PERSON",
-        "resolved_text": "Amit Verma"
+        "resolved_text": "Suresh Yadav"
       },
       {
-        "text": "M. Tiwari",
+        "text": "Y. Thakur",
         "label": "PERSON",
-        "resolved_text": "Manoj Tiwari",
-        "original_text": "M. Tiwari"
+        "resolved_text": "Yash Thakur",
+        "original_text": "Y. Thakur"
       },
       {
         "text": "Sudama Nagar",
@@ -961,14 +966,14 @@
   {
     "doc_id": "SOC-3001",
     "date": "2026-07-26 00:00:00",
-    "text": "heard V. Singh doing kuch shady business with Om Logistics lately",
+    "text": "heard K. Malhotra doing kuch shady business with Om Logistics lately",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "V. Singh",
+        "text": "K. Malhotra",
         "label": "PERSON",
-        "resolved_text": "Vikram Singh",
-        "original_text": "V. Singh"
+        "resolved_text": "Karan Malhotra",
+        "original_text": "K. Malhotra"
       },
       {
         "text": "Om Logistics",
@@ -980,46 +985,46 @@
   {
     "doc_id": "SOC-3002",
     "date": "2026-07-14 00:00:00",
-    "text": "does anyone know Sanjay Mehta?? saw them around a lot this month",
+    "text": "does anyone know Vivek Arora?? saw them around a lot this month",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "Sanjay Mehta",
+        "text": "Vivek Arora",
         "label": "PERSON",
-        "resolved_text": "Sanjay Mehta"
+        "resolved_text": "Vivek Arora"
       }
     ]
   },
   {
     "doc_id": "SOC-3003",
     "date": "2026-07-22 00:00:00",
-    "text": "does anyone know Deepak Rao?? saw them around a lot this month",
+    "text": "does anyone know Karan Malhotra?? saw them around a lot this month",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "Deepak Rao",
+        "text": "Karan Malhotra",
         "label": "PERSON",
-        "resolved_text": "Deepak Rao"
+        "resolved_text": "Karan Malhotra"
       }
     ]
   },
   {
     "doc_id": "SOC-3004",
     "date": "2026-07-15 00:00:00",
-    "text": "@ravi_27 aur @sanjay_23 ka group chat leak \u2014 dono Vijay Nagar ja rahe the",
+    "text": "@neeraj_19 aur @vivek_72 ka group chat leak \u2014 dono Vijay Nagar ja rahe the",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "@ravi_27",
+        "text": "@neeraj_19",
         "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "@ravi_27"
+        "resolved_text": "Neeraj Sharma",
+        "original_text": "@neeraj_19"
       },
       {
-        "text": "@sanjay_23",
+        "text": "@vivek_72",
         "label": "PERSON",
-        "resolved_text": "Sanjay Mehta",
-        "original_text": "@sanjay_23"
+        "resolved_text": "Vivek Arora",
+        "original_text": "@vivek_72"
       },
       {
         "text": "Vijay Nagar",
@@ -1030,21 +1035,54 @@
   },
   {
     "doc_id": "SOC-3005",
-    "date": "2026-07-03 00:00:00",
-    "text": "@ravi_27 aur @sanjay_23 ka group chat leak \u2014 dono Malviya Nagar ja rahe the",
+    "date": "2026-07-04 00:00:00",
+    "text": "seen Gaurav S. aur Y. Thakur together near Vijay Nagar yesterday \ud83d\udc40",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "@ravi_27",
+        "text": "Gaurav S.",
         "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "@ravi_27"
+        "resolved_text": "Gaurav Sethi",
+        "original_text": "Gaurav S."
       },
       {
-        "text": "@sanjay_23",
+        "text": "Y. Thakur",
         "label": "PERSON",
-        "resolved_text": "Sanjay Mehta",
-        "original_text": "@sanjay_23"
+        "resolved_text": "Yash Thakur",
+        "original_text": "Y. Thakur"
+      },
+      {
+        "text": "Vijay Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Vijay Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "SOC-3006",
+    "date": "2026-07-11 00:00:00",
+    "text": "does anyone know Rohit B.?? saw them around a lot this month",
+    "source_type": "SOCIAL_MEDIA",
+    "entities": [
+      {
+        "text": "Rohit B.",
+        "label": "PERSON",
+        "resolved_text": "Rohit Bansal",
+        "original_text": "Rohit B."
+      }
+    ]
+  },
+  {
+    "doc_id": "SOC-3007",
+    "date": "2026-07-17 00:00:00",
+    "text": "@rahul_91 posted a story tagged at Malviya Nagar",
+    "source_type": "SOCIAL_MEDIA",
+    "entities": [
+      {
+        "text": "@rahul_91",
+        "label": "PERSON",
+        "resolved_text": "Rahul Sharma",
+        "original_text": "@rahul_91"
       },
       {
         "text": "Malviya Nagar",
@@ -1054,79 +1092,16 @@
     ]
   },
   {
-    "doc_id": "SOC-3006",
-    "date": "2026-07-12 00:00:00",
-    "text": "heard R. Kumar doing kuch shady business with Om Logistics lately",
-    "source_type": "SOCIAL_MEDIA",
-    "entities": [
-      {
-        "text": "R. Kumar",
-        "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "R. Kumar"
-      },
-      {
-        "text": "Om Logistics",
-        "label": "ORGANIZATION",
-        "resolved_text": "Om Logistics"
-      }
-    ]
-  },
-  {
-    "doc_id": "SOC-3007",
-    "date": "2026-07-21 00:00:00",
-    "text": "heard S. Mehta doing kuch shady business with Om Logistics lately",
-    "source_type": "SOCIAL_MEDIA",
-    "entities": [
-      {
-        "text": "S. Mehta",
-        "label": "PERSON",
-        "resolved_text": "Sanjay Mehta",
-        "original_text": "S. Mehta"
-      },
-      {
-        "text": "Om Logistics",
-        "label": "ORGANIZATION",
-        "resolved_text": "Om Logistics"
-      }
-    ]
-  },
-  {
     "doc_id": "SOC-3008",
-    "date": "2026-07-15 00:00:00",
-    "text": "@amit_13 posted a story tagged at Sudama Nagar",
+    "date": "2026-07-06 00:00:00",
+    "text": "@sameer_74 posted a story tagged at Bhawarkuan",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "@amit_13",
+        "text": "@sameer_74",
         "label": "PERSON",
-        "resolved_text": "Amit Verma",
-        "original_text": "@amit_13"
-      },
-      {
-        "text": "Sudama Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Sudama Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "SOC-3009",
-    "date": "2026-07-13 00:00:00",
-    "text": "@ravi_27 aur @sanjay_23 ka group chat leak \u2014 dono Bhawarkuan ja rahe the",
-    "source_type": "SOCIAL_MEDIA",
-    "entities": [
-      {
-        "text": "@ravi_27",
-        "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "@ravi_27"
-      },
-      {
-        "text": "@sanjay_23",
-        "label": "PERSON",
-        "resolved_text": "Sanjay Mehta",
-        "original_text": "@sanjay_23"
+        "resolved_text": "Sameer Khan",
+        "original_text": "@sameer_74"
       },
       {
         "text": "Bhawarkuan",
@@ -1136,20 +1111,30 @@
     ]
   },
   {
-    "doc_id": "SOC-3010",
-    "date": "2026-07-12 00:00:00",
-    "text": "seen Vikram Singh aur Rahul Sharma together near Sudama Nagar yesterday \ud83d\udc40",
+    "doc_id": "SOC-3009",
+    "date": "2026-07-07 00:00:00",
+    "text": "does anyone know A. Saxena?? saw them around a lot this month",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "Vikram Singh",
+        "text": "A. Saxena",
         "label": "PERSON",
-        "resolved_text": "Vikram Singh"
-      },
+        "resolved_text": "Ankit Saxena",
+        "original_text": "A. Saxena"
+      }
+    ]
+  },
+  {
+    "doc_id": "SOC-3010",
+    "date": "2026-07-22 00:00:00",
+    "text": "@nitin_32 posted a story tagged at Sudama Nagar",
+    "source_type": "SOCIAL_MEDIA",
+    "entities": [
       {
-        "text": "Rahul Sharma",
+        "text": "@nitin_32",
         "label": "PERSON",
-        "resolved_text": "Rahul Sharma"
+        "resolved_text": "Nitin Joshi",
+        "original_text": "@nitin_32"
       },
       {
         "text": "Sudama Nagar",
@@ -1160,14 +1145,40 @@
   },
   {
     "doc_id": "SOC-3011",
-    "date": "2026-07-19 00:00:00",
-    "text": "heard Vikram Singh doing kuch shady business with Om Logistics lately",
+    "date": "2026-07-20 00:00:00",
+    "text": "@sameer_74 aur @aditya_29 ka group chat leak \u2014 dono Sudama Nagar ja rahe the",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "Vikram Singh",
+        "text": "@sameer_74",
         "label": "PERSON",
-        "resolved_text": "Vikram Singh"
+        "resolved_text": "Sameer Khan",
+        "original_text": "@sameer_74"
+      },
+      {
+        "text": "@aditya_29",
+        "label": "PERSON",
+        "resolved_text": "Aditya Kapoor",
+        "original_text": "@aditya_29"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Sudama Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "SOC-3012",
+    "date": "2026-07-23 00:00:00",
+    "text": "heard Sameer K. doing kuch shady business with Om Logistics lately",
+    "source_type": "SOCIAL_MEDIA",
+    "entities": [
+      {
+        "text": "Sameer K.",
+        "label": "PERSON",
+        "resolved_text": "Sameer Khan",
+        "original_text": "Sameer K."
       },
       {
         "text": "Om Logistics",
@@ -1177,43 +1188,41 @@
     ]
   },
   {
-    "doc_id": "SOC-3012",
-    "date": "2026-07-11 00:00:00",
-    "text": "does anyone know Manoj Tiwari?? saw them around a lot this month",
-    "source_type": "SOCIAL_MEDIA",
-    "entities": [
-      {
-        "text": "Manoj Tiwari",
-        "label": "PERSON",
-        "resolved_text": "Manoj Tiwari"
-      }
-    ]
-  },
-  {
     "doc_id": "SOC-3013",
-    "date": "2026-07-14 00:00:00",
-    "text": "does anyone know R. Sharma?? saw them around a lot this month",
+    "date": "2026-07-23 00:00:00",
+    "text": "@rakesh_83 aur @varun_48 ka group chat leak \u2014 dono Sudama Nagar ja rahe the",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "R. Sharma",
+        "text": "@rakesh_83",
         "label": "PERSON",
-        "resolved_text": "Rahul Sharma",
-        "original_text": "R. Sharma"
+        "resolved_text": "Rakesh Jain",
+        "original_text": "@rakesh_83"
+      },
+      {
+        "text": "@varun_48",
+        "label": "PERSON",
+        "resolved_text": "Varun Mehra",
+        "original_text": "@varun_48"
+      },
+      {
+        "text": "Sudama Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Sudama Nagar"
       }
     ]
   },
   {
     "doc_id": "SOC-3014",
     "date": "2026-07-20 00:00:00",
-    "text": "heard R. Kumar doing kuch shady business with Om Logistics lately",
+    "text": "heard M. Chauhan doing kuch shady business with Om Logistics lately",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "R. Kumar",
+        "text": "M. Chauhan",
         "label": "PERSON",
-        "resolved_text": "Ravi Kumar",
-        "original_text": "R. Kumar"
+        "resolved_text": "Mohit Chauhan",
+        "original_text": "M. Chauhan"
       },
       {
         "text": "Om Logistics",
@@ -1225,20 +1234,20 @@
   {
     "doc_id": "SOC-3015",
     "date": "2026-07-16 00:00:00",
-    "text": "@vikram_24 aur @rahul_91 ka group chat leak \u2014 dono Rajwada ja rahe the",
+    "text": "@karan_17 aur @vikram_24 ka group chat leak \u2014 dono Rajwada ja rahe the",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
+      {
+        "text": "@karan_17",
+        "label": "PERSON",
+        "resolved_text": "Karan Malhotra",
+        "original_text": "@karan_17"
+      },
       {
         "text": "@vikram_24",
         "label": "PERSON",
         "resolved_text": "Vikram Singh",
         "original_text": "@vikram_24"
-      },
-      {
-        "text": "@rahul_91",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma",
-        "original_text": "@rahul_91"
       },
       {
         "text": "Rajwada",
@@ -1250,33 +1259,37 @@
   {
     "doc_id": "SOC-3016",
     "date": "2026-07-08 00:00:00",
-    "text": "@manoj_38 posted a story tagged at Bhawarkuan",
+    "text": "seen Harsh Vardhan aur Rakesh Jain together near Rajwada yesterday \ud83d\udc40",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "@manoj_38",
+        "text": "Harsh Vardhan",
         "label": "PERSON",
-        "resolved_text": "Manoj Tiwari",
-        "original_text": "@manoj_38"
+        "resolved_text": "Harsh Vardhan"
       },
       {
-        "text": "Bhawarkuan",
+        "text": "Rakesh Jain",
+        "label": "PERSON",
+        "resolved_text": "Rakesh Jain"
+      },
+      {
+        "text": "Rajwada",
         "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
+        "resolved_text": "Rajwada"
       }
     ]
   },
   {
     "doc_id": "SOC-3017",
     "date": "2026-07-25 00:00:00",
-    "text": "heard Vicky Singh doing kuch shady business with Om Logistics lately",
+    "text": "heard D. Rao doing kuch shady business with Om Logistics lately",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "Vicky Singh",
+        "text": "D. Rao",
         "label": "PERSON",
-        "resolved_text": "Vikram Singh",
-        "original_text": "Vicky Singh"
+        "resolved_text": "Deepak Rao",
+        "original_text": "D. Rao"
       },
       {
         "text": "Om Logistics",
@@ -1288,26 +1301,26 @@
   {
     "doc_id": "SOC-3018",
     "date": "2026-07-25 00:00:00",
-    "text": "does anyone know Amit Verma?? saw them around a lot this month",
+    "text": "does anyone know Nitin Joshi?? saw them around a lot this month",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "Amit Verma",
+        "text": "Nitin Joshi",
         "label": "PERSON",
-        "resolved_text": "Amit Verma"
+        "resolved_text": "Nitin Joshi"
       }
     ]
   },
   {
     "doc_id": "SOC-3019",
     "date": "2026-07-12 00:00:00",
-    "text": "heard Vikram Singh doing kuch shady business with Om Logistics lately",
+    "text": "heard Arjun Patel doing kuch shady business with Om Logistics lately",
     "source_type": "SOCIAL_MEDIA",
     "entities": [
       {
-        "text": "Vikram Singh",
+        "text": "Arjun Patel",
         "label": "PERSON",
-        "resolved_text": "Vikram Singh"
+        "resolved_text": "Arjun Patel"
       },
       {
         "text": "Om Logistics",
@@ -1318,34 +1331,85 @@
   },
   {
     "doc_id": "INTEL-4000",
-    "date": "2026-07-11 00:00:00",
-    "text": "Source (reliability: C) reports Vikram Singh coordinating with R. Sharma on logistics near Vijay Nagar.",
+    "date": "2026-07-19 00:00:00",
+    "text": "Intercept suggests Varun Mehra affiliated with Om Logistics; activity concentrated around Rajwada.",
     "source_type": "INTEL_REPORT",
     "entities": [
       {
-        "text": "Vikram Singh",
+        "text": "Varun Mehra",
         "label": "PERSON",
-        "resolved_text": "Vikram Singh"
+        "resolved_text": "Varun Mehra"
       },
       {
-        "text": "R. Sharma",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma",
-        "original_text": "R. Sharma"
+        "text": "Om Logistics",
+        "label": "ORGANIZATION",
+        "resolved_text": "Om Logistics"
       },
       {
-        "text": "Vijay Nagar",
+        "text": "Rajwada",
         "label": "LOCATION",
-        "resolved_text": "Vijay Nagar"
+        "resolved_text": "Rajwada"
       }
     ]
   },
   {
     "doc_id": "INTEL-4001",
-    "date": "2026-07-09 00:00:00",
-    "text": "Intercept suggests S. Yadav affiliated with Om Logistics; activity concentrated around Bhawarkuan.",
+    "date": "2026-07-14 00:00:00",
+    "text": "Intercept suggests R. Kumar affiliated with Balaji Enterprises; activity concentrated around Malviya Nagar.",
     "source_type": "INTEL_REPORT",
     "entities": [
+      {
+        "text": "R. Kumar",
+        "label": "PERSON",
+        "resolved_text": "Ravi Kumar",
+        "original_text": "R. Kumar"
+      },
+      {
+        "text": "Balaji Enterprises",
+        "label": "ORGANIZATION",
+        "resolved_text": "Balaji Enterprises"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "INTEL-4002",
+    "date": "2026-07-06 00:00:00",
+    "text": "Intercept suggests Sanjay Mehta affiliated with Balaji Enterprises; activity concentrated around Malviya Nagar.",
+    "source_type": "INTEL_REPORT",
+    "entities": [
+      {
+        "text": "Sanjay Mehta",
+        "label": "PERSON",
+        "resolved_text": "Sanjay Mehta"
+      },
+      {
+        "text": "Balaji Enterprises",
+        "label": "ORGANIZATION",
+        "resolved_text": "Balaji Enterprises"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "INTEL-4003",
+    "date": "2026-07-22 00:00:00",
+    "text": "Source (reliability: C) reports Arjun Patel coordinating with S. Yadav on logistics near Malviya Nagar.",
+    "source_type": "INTEL_REPORT",
+    "entities": [
+      {
+        "text": "Arjun Patel",
+        "label": "PERSON",
+        "resolved_text": "Arjun Patel"
+      },
       {
         "text": "S. Yadav",
         "label": "PERSON",
@@ -1353,9 +1417,27 @@
         "original_text": "S. Yadav"
       },
       {
-        "text": "Om Logistics",
-        "label": "ORGANIZATION",
-        "resolved_text": "Om Logistics"
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "INTEL-4004",
+    "date": "2026-07-04 00:00:00",
+    "text": "Source (reliability: A) reports Karan Malhotra coordinating with Vikram Singh on logistics near Bhawarkuan.",
+    "source_type": "INTEL_REPORT",
+    "entities": [
+      {
+        "text": "Karan Malhotra",
+        "label": "PERSON",
+        "resolved_text": "Karan Malhotra"
+      },
+      {
+        "text": "Vikram Singh",
+        "label": "PERSON",
+        "resolved_text": "Vikram Singh"
       },
       {
         "text": "Bhawarkuan",
@@ -1365,9 +1447,56 @@
     ]
   },
   {
-    "doc_id": "INTEL-4002",
-    "date": "2026-07-07 00:00:00",
-    "text": "Intercept suggests Ravi Kumar affiliated with Balaji Enterprises; activity concentrated around Bhawarkuan.",
+    "doc_id": "INTEL-4005",
+    "date": "2026-07-24 00:00:00",
+    "text": "Source (reliability: B) reports Varun Mehra coordinating with Rakesh Jain on logistics near Malviya Nagar.",
+    "source_type": "INTEL_REPORT",
+    "entities": [
+      {
+        "text": "Varun Mehra",
+        "label": "PERSON",
+        "resolved_text": "Varun Mehra"
+      },
+      {
+        "text": "Rakesh Jain",
+        "label": "PERSON",
+        "resolved_text": "Rakesh Jain"
+      },
+      {
+        "text": "Malviya Nagar",
+        "label": "LOCATION",
+        "resolved_text": "Malviya Nagar"
+      }
+    ]
+  },
+  {
+    "doc_id": "INTEL-4006",
+    "date": "2026-07-12 00:00:00",
+    "text": "Source (reliability: B) reports R. Jain coordinating with Harsh Vardhan on logistics near Rajwada.",
+    "source_type": "INTEL_REPORT",
+    "entities": [
+      {
+        "text": "R. Jain",
+        "label": "PERSON",
+        "resolved_text": "Rakesh Jain",
+        "original_text": "R. Jain"
+      },
+      {
+        "text": "Harsh Vardhan",
+        "label": "PERSON",
+        "resolved_text": "Harsh Vardhan"
+      },
+      {
+        "text": "Rajwada",
+        "label": "LOCATION",
+        "resolved_text": "Rajwada"
+      }
+    ]
+  },
+  {
+    "doc_id": "INTEL-4007",
+    "date": "2026-07-29 00:00:00",
+    "text": "Intercept suggests Ravi Kumar affiliated with Balaji Enterprises; activity concentrated around Sudama Nagar.",
     "source_type": "INTEL_REPORT",
     "entities": [
       {
@@ -1381,29 +1510,6 @@
         "resolved_text": "Balaji Enterprises"
       },
       {
-        "text": "Bhawarkuan",
-        "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
-      }
-    ]
-  },
-  {
-    "doc_id": "INTEL-4003",
-    "date": "2026-07-29 00:00:00",
-    "text": "Source (reliability: B) reports Deepak Rao coordinating with Manoj Tiwari on logistics near Sudama Nagar.",
-    "source_type": "INTEL_REPORT",
-    "entities": [
-      {
-        "text": "Deepak Rao",
-        "label": "PERSON",
-        "resolved_text": "Deepak Rao"
-      },
-      {
-        "text": "Manoj Tiwari",
-        "label": "PERSON",
-        "resolved_text": "Manoj Tiwari"
-      },
-      {
         "text": "Sudama Nagar",
         "label": "LOCATION",
         "resolved_text": "Sudama Nagar"
@@ -1411,114 +1517,20 @@
     ]
   },
   {
-    "doc_id": "INTEL-4004",
-    "date": "2026-07-05 00:00:00",
-    "text": "Intercept suggests Suresh Y. affiliated with Om Logistics; activity concentrated around Rajwada.",
+    "doc_id": "INTEL-4008",
+    "date": "2026-07-20 00:00:00",
+    "text": "Intercept suggests Arjun Patel affiliated with Shree Traders; activity concentrated around Malviya Nagar.",
     "source_type": "INTEL_REPORT",
     "entities": [
       {
-        "text": "Suresh Y.",
+        "text": "Arjun Patel",
         "label": "PERSON",
-        "resolved_text": "Suresh Yadav",
-        "original_text": "Suresh Y."
-      },
-      {
-        "text": "Om Logistics",
-        "label": "ORGANIZATION",
-        "resolved_text": "Om Logistics"
-      },
-      {
-        "text": "Rajwada",
-        "label": "LOCATION",
-        "resolved_text": "Rajwada"
-      }
-    ]
-  },
-  {
-    "doc_id": "INTEL-4005",
-    "date": "2026-07-13 00:00:00",
-    "text": "Intercept suggests Suresh Yadav affiliated with Shree Traders; activity concentrated around Vijay Nagar.",
-    "source_type": "INTEL_REPORT",
-    "entities": [
-      {
-        "text": "Suresh Yadav",
-        "label": "PERSON",
-        "resolved_text": "Suresh Yadav"
+        "resolved_text": "Arjun Patel"
       },
       {
         "text": "Shree Traders",
         "label": "ORGANIZATION",
         "resolved_text": "Shree Traders"
-      },
-      {
-        "text": "Vijay Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Vijay Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "INTEL-4006",
-    "date": "2026-07-22 00:00:00",
-    "text": "Source (reliability: C) reports Manoj Tiwari coordinating with S. Yadav on logistics near Malviya Nagar.",
-    "source_type": "INTEL_REPORT",
-    "entities": [
-      {
-        "text": "Manoj Tiwari",
-        "label": "PERSON",
-        "resolved_text": "Manoj Tiwari"
-      },
-      {
-        "text": "S. Yadav",
-        "label": "PERSON",
-        "resolved_text": "Suresh Yadav",
-        "original_text": "S. Yadav"
-      },
-      {
-        "text": "Malviya Nagar",
-        "label": "LOCATION",
-        "resolved_text": "Malviya Nagar"
-      }
-    ]
-  },
-  {
-    "doc_id": "INTEL-4007",
-    "date": "2026-07-04 00:00:00",
-    "text": "Source (reliability: A) reports Vikram Singh coordinating with Rahul Sharma on logistics near Bhawarkuan.",
-    "source_type": "INTEL_REPORT",
-    "entities": [
-      {
-        "text": "Vikram Singh",
-        "label": "PERSON",
-        "resolved_text": "Vikram Singh"
-      },
-      {
-        "text": "Rahul Sharma",
-        "label": "PERSON",
-        "resolved_text": "Rahul Sharma"
-      },
-      {
-        "text": "Bhawarkuan",
-        "label": "LOCATION",
-        "resolved_text": "Bhawarkuan"
-      }
-    ]
-  },
-  {
-    "doc_id": "INTEL-4008",
-    "date": "2026-07-24 00:00:00",
-    "text": "Source (reliability: B) reports Suresh Yadav coordinating with Manoj Tiwari on logistics near Malviya Nagar.",
-    "source_type": "INTEL_REPORT",
-    "entities": [
-      {
-        "text": "Suresh Yadav",
-        "label": "PERSON",
-        "resolved_text": "Suresh Yadav"
-      },
-      {
-        "text": "Manoj Tiwari",
-        "label": "PERSON",
-        "resolved_text": "Manoj Tiwari"
       },
       {
         "text": "Malviya Nagar",
@@ -1529,20 +1541,19 @@
   },
   {
     "doc_id": "INTEL-4009",
-    "date": "2026-07-12 00:00:00",
-    "text": "Source (reliability: B) reports M. Tiwari coordinating with Deepak Rao on logistics near Rajwada.",
+    "date": "2026-07-25 00:00:00",
+    "text": "Intercept suggests Sanjay Mehta affiliated with Om Logistics; activity concentrated around Rajwada.",
     "source_type": "INTEL_REPORT",
     "entities": [
       {
-        "text": "M. Tiwari",
+        "text": "Sanjay Mehta",
         "label": "PERSON",
-        "resolved_text": "Manoj Tiwari",
-        "original_text": "M. Tiwari"
+        "resolved_text": "Sanjay Mehta"
       },
       {
-        "text": "Deepak Rao",
-        "label": "PERSON",
-        "resolved_text": "Deepak Rao"
+        "text": "Om Logistics",
+        "label": "ORGANIZATION",
+        "resolved_text": "Om Logistics"
       },
       {
         "text": "Rajwada",

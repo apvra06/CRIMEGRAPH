@@ -18,6 +18,18 @@
     "group": "A"
   },
   {
+    "name": "Karan Malhotra",
+    "phone": "9812345670",
+    "vehicle": "MP09KL4521",
+    "group": "A"
+  },
+  {
+    "name": "Nitin Joshi",
+    "phone": "9823456710",
+    "vehicle": null,
+    "group": "A"
+  },
+  {
     "name": "Suresh Yadav",
     "phone": "9871234560",
     "vehicle": null,
@@ -36,6 +48,18 @@
     "group": "B"
   },
   {
+    "name": "Arjun Patel",
+    "phone": "9898765432",
+    "vehicle": "MP04AP7812",
+    "group": "B"
+  },
+  {
+    "name": "Mohit Chauhan",
+    "phone": "9753108642",
+    "vehicle": null,
+    "group": "B"
+  },
+  {
     "name": "Ravi Kumar",
     "phone": "9345678901",
     "vehicle": "MP04GH7890",
@@ -46,5 +70,83 @@
     "phone": "9456789012",
     "vehicle": null,
     "group": "C"
+  },
+  {
+    "name": "Rohit Bansal",
+    "phone": "9632587410",
+    "vehicle": "MP09RB2367",
+    "group": "C"
+  },
+  {
+    "name": "Aditya Kapoor",
+    "phone": "9543216780",
+    "vehicle": null,
+    "group": "C"
+  },
+  {
+    "name": "Sameer Khan",
+    "phone": "9678452310",
+    "vehicle": "MP04SK5643",
+    "group": "C"
+  },
+  {
+    "name": "Ankit Saxena",
+    "phone": "9813572460",
+    "vehicle": "MP09AS8172",
+    "group": "D"
+  },
+  {
+    "name": "Varun Mehra",
+    "phone": "9724681350",
+    "vehicle": "MP04VM3498",
+    "group": "D"
+  },
+  {
+    "name": "Pankaj Gupta",
+    "phone": "9865321470",
+    "vehicle": null,
+    "group": "D"
+  },
+  {
+    "name": "Harsh Vardhan",
+    "phone": "9531748620",
+    "vehicle": "MP09HV6254",
+    "group": "D"
+  },
+  {
+    "name": "Rakesh Jain",
+    "phone": "9682413570",
+    "vehicle": null,
+    "group": "D"
+  },
+  {
+    "name": "Neeraj Sharma",
+    "phone": "9791358246",
+    "vehicle": "MP04NS4387",
+    "group": "E"
+  },
+  {
+    "name": "Yash Thakur",
+    "phone": "9842167350",
+    "vehicle": null,
+    "group": "E"
+  },
+  {
+    "name": "Akash Mishra",
+    "phone": "9567823410",
+    "vehicle": "MP09AM5728",
+    "group": "E"
+  },
+  {
+    "name": "Vivek Arora",
+    "phone": "9918246735",
+    "vehicle": null,
+    "group": "E"
+  },
+  {
+    "name": "Gaurav Sethi",
+    "phone": "9785432160",
+    "vehicle": "MP04GS9146",
+    "group": "E"
   }
 ]

@@ -28,6 +28,67 @@
     "S. Mehta",
     "Sanjay M."
   ],
+  "Karan Malhotra": [
+    "K. Malhotra",
+    "Karan M."
+  ],
+  "Nitin Joshi": [
+    "N. Joshi"
+  ],
+  "Arjun Patel": [
+    "A. Patel",
+    "Arjun P."
+  ],
+  "Mohit Chauhan": [
+    "M. Chauhan"
+  ],
+  "Rohit Bansal": [
+    "R. Bansal",
+    "Rohit B."
+  ],
+  "Aditya Kapoor": [
+    "A. Kapoor"
+  ],
+  "Sameer Khan": [
+    "S. Khan",
+    "Sameer K."
+  ],
+  "Ankit Saxena": [
+    "A. Saxena",
+    "Ankit S."
+  ],
+  "Varun Mehra": [
+    "V. Mehra"
+  ],
+  "Pankaj Gupta": [
+    "P. Gupta",
+    "Pankaj G."
+  ],
+  "Harsh Vardhan": [
+    "H. Vardhan"
+  ],
+  "Rakesh Jain": [
+    "R. Jain",
+    "Rakesh J."
+  ],
+  "Neeraj Sharma": [
+    "N. Sharma",
+    "Neeraj S."
+  ],
+  "Yash Thakur": [
+    "Y. Thakur"
+  ],
+  "Akash Mishra": [
+    "A. Mishra",
+    "Akash M."
+  ],
+  "Vivek Arora": [
+    "V. Arora"
+  ],
+  "Gaurav Sethi": [
+    "G. Sethi",
+    "Gaurav S."
+  ],
   "_handles": {
     "Rahul Sharma": "@rahul_91",
     "Vikram Singh": "@vikram_24",
@@ -36,6 +97,23 @@
     "Deepak Rao": "@deepak_41",
     "Manoj Tiwari": "@manoj_38",
     "Ravi Kumar": "@ravi_27",
-    "Sanjay Mehta": "@sanjay_23"
+    "Sanjay Mehta": "@sanjay_23",
+    "Karan Malhotra": "@karan_17",
+    "Nitin Joshi": "@nitin_32",
+    "Arjun Patel": "@arjun_46",
+    "Mohit Chauhan": "@mohit_58",
+    "Rohit Bansal": "@rohit_61",
+    "Aditya Kapoor": "@aditya_29",
+    "Sameer Khan": "@sameer_74",
+    "Ankit Saxena": "@ankit_35",
+    "Varun Mehra": "@varun_48",
+    "Pankaj Gupta": "@pankaj_52",
+    "Harsh Vardhan": "@harsh_67",
+    "Rakesh Jain": "@rakesh_83",
+    "Neeraj Sharma": "@neeraj_19",
+    "Yash Thakur": "@yash_43",
+    "Akash Mishra": "@akash_56",
+    "Vivek Arora": "@vivek_72",
+    "Gaurav Sethi": "@gaurav_88"
   }
 }

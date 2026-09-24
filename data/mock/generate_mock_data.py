@@ -17,40 +17,244 @@ import csv
 import json
 import random
 from datetime import datetime, timedelta
+from pathlib import Path
+
+OUTPUT_DIR = Path(__file__).resolve().parent
 
 random.seed(42)
 
 # ---- Shared entity pool -----------------------------------------------
+# 25 canonical subjects across 5 operational cells.
+# Existing 8 subjects are preserved exactly as the original ground truth.
+
 PEOPLE = [
-    {"name": "Rahul Sharma", "phone": "9876543210", "vehicle": "MP09AB1234", "group": "A"},
-    {"name": "Vikram Singh", "phone": "9123456780", "vehicle": "MP09XY5678", "group": "A"},
-    {"name": "Amit Verma", "phone": "9988776655", "vehicle": "MP04CD9012", "group": "A"},
-    {"name": "Suresh Yadav", "phone": "9871234560", "vehicle": None, "group": "B"},
-    {"name": "Deepak Rao", "phone": "9012345678", "vehicle": "MP09EF3456", "group": "B"},
-    {"name": "Manoj Tiwari", "phone": "9765432109", "vehicle": None, "group": "B"},
-    {"name": "Ravi Kumar", "phone": "9345678901", "vehicle": "MP04GH7890", "group": "C"},
-    {"name": "Sanjay Mehta", "phone": "9456789012", "vehicle": None, "group": "C"},
+    # =========================
+    # CELL A
+    # =========================
+    {
+        "name": "Rahul Sharma",
+        "phone": "9876543210",
+        "vehicle": "MP09AB1234",
+        "group": "A",
+    },
+    {
+        "name": "Vikram Singh",
+        "phone": "9123456780",
+        "vehicle": "MP09XY5678",
+        "group": "A",
+    },
+    {
+        "name": "Amit Verma",
+        "phone": "9988776655",
+        "vehicle": "MP04CD9012",
+        "group": "A",
+    },
+    {
+        "name": "Karan Malhotra",
+        "phone": "9812345670",
+        "vehicle": "MP09KL4521",
+        "group": "A",
+    },
+    {
+        "name": "Nitin Joshi",
+        "phone": "9823456710",
+        "vehicle": None,
+        "group": "A",
+    },
+
+    # =========================
+    # CELL B
+    # =========================
+    {
+        "name": "Suresh Yadav",
+        "phone": "9871234560",
+        "vehicle": None,
+        "group": "B",
+    },
+    {
+        "name": "Deepak Rao",
+        "phone": "9012345678",
+        "vehicle": "MP09EF3456",
+        "group": "B",
+    },
+    {
+        "name": "Manoj Tiwari",
+        "phone": "9765432109",
+        "vehicle": None,
+        "group": "B",
+    },
+    {
+        "name": "Arjun Patel",
+        "phone": "9898765432",
+        "vehicle": "MP04AP7812",
+        "group": "B",
+    },
+    {
+        "name": "Mohit Chauhan",
+        "phone": "9753108642",
+        "vehicle": None,
+        "group": "B",
+    },
+
+    # =========================
+    # CELL C
+    # =========================
+    {
+        "name": "Ravi Kumar",
+        "phone": "9345678901",
+        "vehicle": "MP04GH7890",
+        "group": "C",
+    },
+    {
+        "name": "Sanjay Mehta",
+        "phone": "9456789012",
+        "vehicle": None,
+        "group": "C",
+    },
+    {
+        "name": "Rohit Bansal",
+        "phone": "9632587410",
+        "vehicle": "MP09RB2367",
+        "group": "C",
+    },
+    {
+        "name": "Aditya Kapoor",
+        "phone": "9543216780",
+        "vehicle": None,
+        "group": "C",
+    },
+    {
+        "name": "Sameer Khan",
+        "phone": "9678452310",
+        "vehicle": "MP04SK5643",
+        "group": "C",
+    },
+
+    # =========================
+    # CELL D
+    # =========================
+    {
+        "name": "Ankit Saxena",
+        "phone": "9813572460",
+        "vehicle": "MP09AS8172",
+        "group": "D",
+    },
+    {
+        "name": "Varun Mehra",
+        "phone": "9724681350",
+        "vehicle": "MP04VM3498",
+        "group": "D",
+    },
+    {
+        "name": "Pankaj Gupta",
+        "phone": "9865321470",
+        "vehicle": None,
+        "group": "D",
+    },
+    {
+        "name": "Harsh Vardhan",
+        "phone": "9531748620",
+        "vehicle": "MP09HV6254",
+        "group": "D",
+    },
+    {
+        "name": "Rakesh Jain",
+        "phone": "9682413570",
+        "vehicle": None,
+        "group": "D",
+    },
+
+    # =========================
+    # CELL E
+    # =========================
+    {
+        "name": "Neeraj Sharma",
+        "phone": "9791358246",
+        "vehicle": "MP04NS4387",
+        "group": "E",
+    },
+    {
+        "name": "Yash Thakur",
+        "phone": "9842167350",
+        "vehicle": None,
+        "group": "E",
+    },
+    {
+        "name": "Akash Mishra",
+        "phone": "9567823410",
+        "vehicle": "MP09AM5728",
+        "group": "E",
+    },
+    {
+        "name": "Vivek Arora",
+        "phone": "9918246735",
+        "vehicle": None,
+        "group": "E",
+    },
+    {
+        "name": "Gaurav Sethi",
+        "phone": "9785432160",
+        "vehicle": "MP04GS9146",
+        "group": "E",
+    },
 ]
 
-GROUPS = {"A": [p for p in PEOPLE if p["group"] == "A"],
-          "B": [p for p in PEOPLE if p["group"] == "B"],
-          "C": [p for p in PEOPLE if p["group"] == "C"]}
+
+GROUPS = {
+    "A": [p for p in PEOPLE if p["group"] == "A"],
+    "B": [p for p in PEOPLE if p["group"] == "B"],
+    "C": [p for p in PEOPLE if p["group"] == "C"],
+    "D": [p for p in PEOPLE if p["group"] == "D"],
+    "E": [p for p in PEOPLE if p["group"] == "E"],
+}
 
 BY_NAME = {p["name"]: p for p in PEOPLE}
 
+
+# ---- Deliberate inter-cell bridges ------------------------------------
+# These are part of the synthetic ground truth and give the graph
+# meaningful cross-community connections.
+
 BRIDGES = [
-    (BY_NAME["Vikram Singh"], BY_NAME["Suresh Yadav"]),   # bridges A <-> B
-    (BY_NAME["Deepak Rao"], BY_NAME["Ravi Kumar"]),        # bridges B <-> C
+    # Existing A <-> B bridge
+    (BY_NAME["Vikram Singh"], BY_NAME["Suresh Yadav"]),
+
+    # Existing B <-> C bridge
+    (BY_NAME["Deepak Rao"], BY_NAME["Ravi Kumar"]),
+
+    # New A <-> D bridge
+    (BY_NAME["Karan Malhotra"], BY_NAME["Ankit Saxena"]),
+
+    # New C <-> D bridge
+    (BY_NAME["Aditya Kapoor"], BY_NAME["Varun Mehra"]),
+
+    # New B <-> E bridge
+    (BY_NAME["Arjun Patel"], BY_NAME["Neeraj Sharma"]),
+
+    # New D <-> E bridge
+    (BY_NAME["Varun Mehra"], BY_NAME["Vivek Arora"]),
 ]
 
+
 def pick_pair(same_group_prob=0.88, bridge_prob=0.07):
+    """
+    Pick a pair of subjects while preserving the intended community
+    structure.
+
+    - Most relationships stay within the same operational cell.
+    - A smaller percentage are deliberate cross-cell bridges.
+    - Remaining selections are random cross-cell relationships.
+    """
     r = random.random()
+
     if r < bridge_prob:
         return random.choice(BRIDGES)
+
     if r < bridge_prob + same_group_prob:
         group = random.choice(list(GROUPS.values()))
         if len(group) >= 2:
             return tuple(random.sample(group, 2))
+
     return tuple(random.sample(PEOPLE, 2))
 
 LOCATIONS = ["Malviya Nagar", "Rajwada", "Vijay Nagar", "Bhawarkuan", "Sudama Nagar"]
@@ -64,7 +268,10 @@ ORGS = ["Shree Traders", "Om Logistics", "Balaji Enterprises"]
 # informal reporting. This alias map is written out as ground truth so the
 # resolution step can be validated, same way ground_truth_entities.json
 # validates the community structure.
+# ---- Name variants / aliases ------------------------------------------
+
 NAME_VARIANTS = {
+    # Existing aliases — unchanged
     "Rahul Sharma": ["R. Sharma", "Rahul S."],
     "Vikram Singh": ["V. Singh", "Vicky Singh"],
     "Amit Verma": ["A. Verma"],
@@ -73,17 +280,81 @@ NAME_VARIANTS = {
     "Manoj Tiwari": ["M. Tiwari", "Manoj T."],
     "Ravi Kumar": ["R. Kumar"],
     "Sanjay Mehta": ["S. Mehta", "Sanjay M."],
+
+    # New Cell A
+    "Karan Malhotra": ["K. Malhotra", "Karan M."],
+    "Nitin Joshi": ["N. Joshi"],
+
+    # New Cell B
+    "Arjun Patel": ["A. Patel", "Arjun P."],
+    "Mohit Chauhan": ["M. Chauhan"],
+
+    # New Cell C
+    "Rohit Bansal": ["R. Bansal", "Rohit B."],
+    "Aditya Kapoor": ["A. Kapoor"],
+    "Sameer Khan": ["S. Khan", "Sameer K."],
+
+    # Cell D
+    "Ankit Saxena": ["A. Saxena", "Ankit S."],
+    "Varun Mehra": ["V. Mehra"],
+    "Pankaj Gupta": ["P. Gupta", "Pankaj G."],
+    "Harsh Vardhan": ["H. Vardhan"],
+    "Rakesh Jain": ["R. Jain", "Rakesh J."],
+
+    # Cell E
+    "Neeraj Sharma": ["N. Sharma", "Neeraj S."],
+    "Yash Thakur": ["Y. Thakur"],
+    "Akash Mishra": ["A. Mishra", "Akash M."],
+    "Vivek Arora": ["V. Arora"],
+    "Gaurav Sethi": ["G. Sethi", "Gaurav S."],
 }
 
-HANDLES = {p["name"]: f"@{p['name'].split()[0].lower()}_{random.randint(10,99)}" for p in PEOPLE}
+
+# Deterministic handles — do not generate these randomly.
+HANDLES = {
+    "Rahul Sharma": "@rahul_91",
+    "Vikram Singh": "@vikram_24",
+    "Amit Verma": "@amit_13",
+    "Suresh Yadav": "@suresh_45",
+    "Deepak Rao": "@deepak_41",
+    "Manoj Tiwari": "@manoj_38",
+    "Ravi Kumar": "@ravi_27",
+    "Sanjay Mehta": "@sanjay_23",
+
+    "Karan Malhotra": "@karan_17",
+    "Nitin Joshi": "@nitin_32",
+
+    "Arjun Patel": "@arjun_46",
+    "Mohit Chauhan": "@mohit_58",
+
+    "Rohit Bansal": "@rohit_61",
+    "Aditya Kapoor": "@aditya_29",
+    "Sameer Khan": "@sameer_74",
+
+    "Ankit Saxena": "@ankit_35",
+    "Varun Mehra": "@varun_48",
+    "Pankaj Gupta": "@pankaj_52",
+    "Harsh Vardhan": "@harsh_67",
+    "Rakesh Jain": "@rakesh_83",
+
+    "Neeraj Sharma": "@neeraj_19",
+    "Yash Thakur": "@yash_43",
+    "Akash Mishra": "@akash_56",
+    "Vivek Arora": "@vivek_72",
+    "Gaurav Sethi": "@gaurav_88",
+}
+
 
 def narrative_name(person, variant_prob=0.3):
-    """Returns the canonical name most of the time, a known variant
-    sometimes — simulates how the same person gets referred to
-    inconsistently across informal reports."""
+    """
+    Returns the canonical name most of the time and a known alias
+    sometimes, simulating inconsistent references across sources.
+    """
     name = person["name"]
+
     if random.random() < variant_prob and name in NAME_VARIANTS:
         return random.choice(NAME_VARIANTS[name])
+
     return name
 
 def format_phone(phone, messy_prob=0.4):
@@ -141,11 +412,11 @@ for j, noise_name in enumerate(NOISE_NAMES):
     fir_reports.append({"doc_id": f"FIR-{1025+j}", "text": text,
                          "date": str(datetime(2026, 7, 26) + timedelta(days=j))})
 
-with open("fir_reports.json", "w") as f:
+with open(OUTPUT_DIR /"fir_reports.json", "w") as f:
     json.dump(fir_reports, f, indent=2)
 
 # ---- 2. Synthetic CDR (unchanged — structured/official, canonical) -----
-with open("cdr.csv", "w", newline="") as f:
+with open(OUTPUT_DIR / "cdr.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["caller_number", "receiver_number", "timestamp", "duration_sec", "tower_location"])
     base_time = datetime(2026, 7, 1)
@@ -158,7 +429,7 @@ with open("cdr.csv", "w", newline="") as f:
                           random.randint(10, 900), random.choice(LOCATIONS)])
 
 # ---- 3. Synthetic financial transactions (unchanged — structured) ------
-with open("transactions.csv", "w", newline="") as f:
+with open(OUTPUT_DIR / "transactions.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["sender_name", "receiver_name", "amount", "timestamp", "transaction_type"])
     base_time = datetime(2026, 7, 1)
@@ -173,7 +444,7 @@ with open("transactions.csv", "w", newline="") as f:
                           random.choice(["UPI", "NEFT", "CASH"])])
 
 # ---- 4. Ground-truth entity map ----------------------------------------
-with open("ground_truth_entities.json", "w") as f:
+with open(OUTPUT_DIR / "ground_truth_entities.json", "w") as f:
     json.dump(PEOPLE, f, indent=2)
 
 # ---- 5. Synthetic surveillance reports (with missing fields) -----------
@@ -202,7 +473,7 @@ for i in range(15):
         "date": str(ts),
     })
 
-with open("surveillance_reports.json", "w") as f:
+with open(OUTPUT_DIR / "surveillance_reports.json", "w") as f:
     json.dump(surveillance_reports, f, indent=2)
 
 # ---- 6. Synthetic social media intel (noisiest, most variant-heavy) ----
@@ -230,7 +501,7 @@ for i in range(20):
         "date": str(ts),
     })
 
-with open("social_media_posts.json", "w") as f:
+with open(OUTPUT_DIR /"social_media_posts.json", "w") as f:
     json.dump(social_media_posts, f, indent=2)
 
 # ---- 7. Synthetic criminal history database (structured, canonical) ----
@@ -244,7 +515,7 @@ for p in PEOPLE:
             "last_case_id": f"CASE-{random.randint(2020,2025)}-{random.randint(100,999)}",
         })
 
-with open("criminal_history.json", "w") as f:
+with open(OUTPUT_DIR /"criminal_history.json", "w") as f:
     json.dump(criminal_history, f, indent=2)
 
 # ---- 8. Synthetic intel agency reports (higher-trust FIR variant) ------
@@ -271,13 +542,13 @@ for i in range(10):
         "date": str(ts),
     })
 
-with open("intel_reports.json", "w") as f:
+with open(OUTPUT_DIR / "intel_reports.json", "w") as f:
     json.dump(intel_reports, f, indent=2)
 
 # ---- 9. Alias ground truth (for validating the resolution step) --------
 alias_ground_truth = {name: variants for name, variants in NAME_VARIANTS.items()}
 alias_ground_truth["_handles"] = HANDLES
-with open("alias_ground_truth.json", "w") as f:
+with open(OUTPUT_DIR / "alias_ground_truth.json", "w") as f:
     json.dump(alias_ground_truth, f, indent=2)
 
 print(f"Generated {len(fir_reports)} FIR reports, 200 CDR rows, 120 transactions,")

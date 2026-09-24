@@ -11,8 +11,11 @@ BEFORE relationships get derived (skipping this step means the same
 person fragments into multiple disconnected Person nodes downstream).
 """
 import json
+from pathlib import Path
 import sys
-sys.path.append("../data/schema")
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT / "data" / "schema"))
 from source_record import SourceType
 
 from extract_entities import build_pipeline, extract_entities
@@ -20,10 +23,10 @@ from resolve_aliases import load_alias_map, resolve_entities
 from extract_relationships import derive_relationships
 
 NARRATIVE_FILES = {
-    SourceType.FIR: "../data/mock/fir_reports.json",
-    SourceType.SURVEILLANCE: "../data/mock/surveillance_reports.json",
-    SourceType.SOCIAL_MEDIA: "../data/mock/social_media_posts.json",
-    SourceType.INTEL_REPORT: "../data/mock/intel_reports.json",
+    SourceType.FIR: PROJECT_ROOT / "data" / "mock" / "fir_reports.json",
+    SourceType.SURVEILLANCE: PROJECT_ROOT / "data" / "mock" / "surveillance_reports.json",
+    SourceType.SOCIAL_MEDIA: PROJECT_ROOT / "data" / "mock" / "social_media_posts.json",
+    SourceType.INTEL_REPORT: PROJECT_ROOT / "data" / "mock" / "intel_reports.json",
 }
 
 
@@ -65,14 +68,14 @@ def main():
     )
     print(f"Resolved {resolved_count} variant/handle/formatted mentions to canonical form.")
 
-    with open("extracted_entities.json", "w", encoding="utf-8") as f:
+    with open(Path(__file__).resolve().parent / "extracted_entities.json", "w", encoding="utf-8") as f:
         json.dump(all_extracted, f, indent=2)
 
     all_relationships = []
     for doc in all_extracted:
         all_relationships.extend(derive_relationships(doc))
 
-    with open("extracted_relationships.json", "w", encoding="utf-8") as f:
+    with open(Path(__file__).resolve().parent / "extracted_relationships.json", "w", encoding="utf-8") as f:
         json.dump(all_relationships, f, indent=2)
 
     print(f"\nTotal: {len(all_extracted)} docs -> {len(all_relationships)} relationships")

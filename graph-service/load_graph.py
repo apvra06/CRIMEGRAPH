@@ -20,7 +20,10 @@ def load_entities(tx, entities):
         label = LABEL_FOR_TYPE.get(ent["label"])
         if not label:
             continue
-        tx.run(f"MERGE (n:{label} {{name: $name}})", name=ent["text"])
+        tx.run(
+         f"MERGE (n:{label} {{name: $name}})",
+         name=ent.get("resolved_text", ent["text"])
+        )
 
 
 def load_relationships(tx, relationships):

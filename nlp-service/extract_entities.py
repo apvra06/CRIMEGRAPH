@@ -23,8 +23,31 @@ from spacy.pipeline import EntityRuler
 # a small lookup list fixes most of the code-mixed (Hinglish) NER failures
 # without needing a full fine-tuned multilingual model.
 KNOWN_PEOPLE = [
-    "Rahul Sharma", "Vikram Singh", "Amit Verma", "Suresh Yadav",
-    "Deepak Rao", "Manoj Tiwari", "Ravi Kumar", "Sanjay Mehta",
+    "Rahul Sharma",
+    "Vikram Singh",
+    "Amit Verma",
+    "Karan Malhotra",
+    "Nitin Joshi",
+    "Suresh Yadav",
+    "Deepak Rao",
+    "Manoj Tiwari",
+    "Arjun Patel",
+    "Mohit Chauhan",
+    "Ravi Kumar",
+    "Sanjay Mehta",
+    "Rohit Bansal",
+    "Aditya Kapoor",
+    "Sameer Khan",
+    "Ankit Saxena",
+    "Varun Mehra",
+    "Pankaj Gupta",
+    "Harsh Vardhan",
+    "Rakesh Jain",
+    "Neeraj Sharma",
+    "Yash Thakur",
+    "Akash Mishra",
+    "Vivek Arora",
+    "Gaurav Sethi",
 ]
 
 KNOWN_LOCATIONS = ["Malviya Nagar", "Rajwada", "Vijay Nagar", "Bhawarkuan", "Sudama Nagar"]

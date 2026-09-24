@@ -10,8 +10,13 @@ generator wrote out (same technique, smaller lookup).
 """
 import json
 import re
+from pathlib import Path
 
-def load_alias_map(path="../data/mock/alias_ground_truth.json"):
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+def load_alias_map(path=None):
+    if path is None:
+        path = PROJECT_ROOT / "data" / "mock" / "alias_ground_truth.json"
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
     alias_to_canonical = {}
@@ -34,14 +39,31 @@ def normalize_phone(raw):
 def resolve_entities(extracted_docs, alias_map):
     for doc in extracted_docs:
         for ent in doc["entities"]:
-            if ent["label"] == "PERSON" and ent["text"] in alias_map:
-                ent["resolved_text"] = alias_map[ent["text"]]
-                ent["original_text"] = ent["text"]
+            if ent["label"] == "PERSON":
+                raw_text = ent["text"]
+
+                # Surveillance reports may prefix a person's name with
+                # "Subject". Remove that reporting label before resolution.
+                lookup_text = re.sub(
+                    r"^\s*Subject\s+",
+                    "",
+                    raw_text,
+                    flags=re.IGNORECASE
+                ).strip()
+
+                if lookup_text in alias_map:
+                    ent["resolved_text"] = alias_map[lookup_text]
+                    ent["original_text"] = raw_text
+                else:
+                    ent["resolved_text"] = lookup_text
+
             elif ent["label"] == "PHONE":
                 ent["resolved_text"] = normalize_phone(ent["text"])
                 ent["original_text"] = ent["text"]
+
             else:
                 ent["resolved_text"] = ent["text"]
+
     return extracted_docs
 
 def main():

@@ -4,7 +4,9 @@
     "prior_convictions": 0,
     "known_associates": [
       "Vikram Singh",
-      "Amit Verma"
+      "Amit Verma",
+      "Karan Malhotra",
+      "Nitin Joshi"
     ],
     "last_case_id": "CASE-2021-314"
   },
@@ -13,42 +15,131 @@
     "prior_convictions": 2,
     "known_associates": [
       "Rahul Sharma",
-      "Vikram Singh"
+      "Vikram Singh",
+      "Karan Malhotra",
+      "Nitin Joshi"
     ],
     "last_case_id": "CASE-2025-724"
+  },
+  {
+    "name": "Nitin Joshi",
+    "prior_convictions": 1,
+    "known_associates": [
+      "Rahul Sharma",
+      "Vikram Singh",
+      "Amit Verma",
+      "Karan Malhotra"
+    ],
+    "last_case_id": "CASE-2021-933"
+  },
+  {
+    "name": "Suresh Yadav",
+    "prior_convictions": 0,
+    "known_associates": [
+      "Deepak Rao",
+      "Manoj Tiwari",
+      "Arjun Patel",
+      "Mohit Chauhan"
+    ],
+    "last_case_id": "CASE-2024-459"
   },
   {
     "name": "Deepak Rao",
     "prior_convictions": 1,
     "known_associates": [
       "Suresh Yadav",
-      "Manoj Tiwari"
-    ],
-    "last_case_id": "CASE-2021-933"
-  },
-  {
-    "name": "Manoj Tiwari",
-    "prior_convictions": 0,
-    "known_associates": [
-      "Suresh Yadav",
-      "Deepak Rao"
-    ],
-    "last_case_id": "CASE-2024-459"
-  },
-  {
-    "name": "Ravi Kumar",
-    "prior_convictions": 1,
-    "known_associates": [
-      "Sanjay Mehta"
+      "Manoj Tiwari",
+      "Arjun Patel",
+      "Mohit Chauhan"
     ],
     "last_case_id": "CASE-2022-820"
   },
   {
-    "name": "Sanjay Mehta",
+    "name": "Manoj Tiwari",
     "prior_convictions": 2,
     "known_associates": [
-      "Ravi Kumar"
+      "Suresh Yadav",
+      "Deepak Rao",
+      "Arjun Patel",
+      "Mohit Chauhan"
     ],
     "last_case_id": "CASE-2024-795"
+  },
+  {
+    "name": "Mohit Chauhan",
+    "prior_convictions": 3,
+    "known_associates": [
+      "Suresh Yadav",
+      "Deepak Rao",
+      "Manoj Tiwari",
+      "Arjun Patel"
+    ],
+    "last_case_id": "CASE-2020-383"
+  },
+  {
+    "name": "Sanjay Mehta",
+    "prior_convictions": 1,
+    "known_associates": [
+      "Ravi Kumar",
+      "Rohit Bansal",
+      "Aditya Kapoor",
+      "Sameer Khan"
+    ],
+    "last_case_id": "CASE-2021-249"
+  },
+  {
+    "name": "Varun Mehra",
+    "prior_convictions": 2,
+    "known_associates": [
+      "Ankit Saxena",
+      "Pankaj Gupta",
+      "Harsh Vardhan",
+      "Rakesh Jain"
+    ],
+    "last_case_id": "CASE-2025-524"
+  },
+  {
+    "name": "Pankaj Gupta",
+    "prior_convictions": 0,
+    "known_associates": [
+      "Ankit Saxena",
+      "Varun Mehra",
+      "Harsh Vardhan",
+      "Rakesh Jain"
+    ],
+    "last_case_id": "CASE-2025-913"
+  },
+  {
+    "name": "Rakesh Jain",
+    "prior_convictions": 2,
+    "known_associates": [
+      "Ankit Saxena",
+      "Varun Mehra",
+      "Pankaj Gupta",
+      "Harsh Vardhan"
+    ],
+    "last_case_id": "CASE-2025-998"
+  },
+  {
+    "name": "Neeraj Sharma",
+    "prior_convictions": 3,
+    "known_associates": [
+      "Yash Thakur",
+      "Akash Mishra",
+      "Vivek Arora",
+      "Gaurav Sethi"
+    ],
+    "last_case_id": "CASE-2022-695"
+  },
+  {
+    "name": "Yash Thakur",
+    "prior_convictions": 0,
+    "known_associates": [
+      "Neeraj Sharma",
+      "Akash Mishra",
+      "Vivek Arora",
+      "Gaurav Sethi"
+    ],
+    "last_case_id": "CASE-2025-569"
   }
 ]

@@ -2,71 +2,71 @@
   {
     "doc_id": "INTEL-4000",
     "classification": "RESTRICTED",
-    "confidence": 0.84,
-    "text": "Source (reliability: C) reports Vikram Singh coordinating with R. Sharma on logistics near Vijay Nagar.",
-    "date": "2026-07-11 00:00:00"
+    "confidence": 0.75,
+    "text": "Intercept suggests Varun Mehra affiliated with Om Logistics; activity concentrated around Rajwada.",
+    "date": "2026-07-19 00:00:00"
   },
   {
     "doc_id": "INTEL-4001",
-    "classification": "CONFIDENTIAL",
-    "confidence": 0.7,
-    "text": "Intercept suggests S. Yadav affiliated with Om Logistics; activity concentrated around Bhawarkuan.",
-    "date": "2026-07-09 00:00:00"
+    "classification": "RESTRICTED",
+    "confidence": 0.95,
+    "text": "Intercept suggests R. Kumar affiliated with Balaji Enterprises; activity concentrated around Malviya Nagar.",
+    "date": "2026-07-14 00:00:00"
   },
   {
     "doc_id": "INTEL-4002",
-    "classification": "CONFIDENTIAL",
-    "confidence": 0.87,
-    "text": "Intercept suggests Ravi Kumar affiliated with Balaji Enterprises; activity concentrated around Bhawarkuan.",
-    "date": "2026-07-07 00:00:00"
+    "classification": "RESTRICTED",
+    "confidence": 0.68,
+    "text": "Intercept suggests Sanjay Mehta affiliated with Balaji Enterprises; activity concentrated around Malviya Nagar.",
+    "date": "2026-07-06 00:00:00"
   },
   {
     "doc_id": "INTEL-4003",
-    "classification": "RESTRICTED",
-    "confidence": 0.52,
-    "text": "Source (reliability: B) reports Deepak Rao coordinating with Manoj Tiwari on logistics near Sudama Nagar.",
-    "date": "2026-07-29 00:00:00"
+    "classification": "CONFIDENTIAL",
+    "confidence": 0.5,
+    "text": "Source (reliability: C) reports Arjun Patel coordinating with S. Yadav on logistics near Malviya Nagar.",
+    "date": "2026-07-22 00:00:00"
   },
   {
     "doc_id": "INTEL-4004",
     "classification": "CONFIDENTIAL",
-    "confidence": 0.57,
-    "text": "Intercept suggests Suresh Y. affiliated with Om Logistics; activity concentrated around Rajwada.",
-    "date": "2026-07-05 00:00:00"
+    "confidence": 0.67,
+    "text": "Source (reliability: A) reports Karan Malhotra coordinating with Vikram Singh on logistics near Bhawarkuan.",
+    "date": "2026-07-04 00:00:00"
   },
   {
     "doc_id": "INTEL-4005",
-    "classification": "CONFIDENTIAL",
-    "confidence": 0.83,
-    "text": "Intercept suggests Suresh Yadav affiliated with Shree Traders; activity concentrated around Vijay Nagar.",
-    "date": "2026-07-13 00:00:00"
+    "classification": "RESTRICTED",
+    "confidence": 0.78,
+    "text": "Source (reliability: B) reports Varun Mehra coordinating with Rakesh Jain on logistics near Malviya Nagar.",
+    "date": "2026-07-24 00:00:00"
   },
   {
     "doc_id": "INTEL-4006",
     "classification": "CONFIDENTIAL",
-    "confidence": 0.5,
-    "text": "Source (reliability: C) reports Manoj Tiwari coordinating with S. Yadav on logistics near Malviya Nagar.",
-    "date": "2026-07-22 00:00:00"
+    "confidence": 0.64,
+    "text": "Source (reliability: B) reports R. Jain coordinating with Harsh Vardhan on logistics near Rajwada.",
+    "date": "2026-07-12 00:00:00"
   },
   {
     "doc_id": "INTEL-4007",
     "classification": "CONFIDENTIAL",
-    "confidence": 0.67,
-    "text": "Source (reliability: A) reports Vikram Singh coordinating with Rahul Sharma on logistics near Bhawarkuan.",
-    "date": "2026-07-04 00:00:00"
+    "confidence": 0.59,
+    "text": "Intercept suggests Ravi Kumar affiliated with Balaji Enterprises; activity concentrated around Sudama Nagar.",
+    "date": "2026-07-29 00:00:00"
   },
   {
     "doc_id": "INTEL-4008",
     "classification": "RESTRICTED",
-    "confidence": 0.78,
-    "text": "Source (reliability: B) reports Suresh Yadav coordinating with Manoj Tiwari on logistics near Malviya Nagar.",
-    "date": "2026-07-24 00:00:00"
+    "confidence": 0.74,
+    "text": "Intercept suggests Arjun Patel affiliated with Shree Traders; activity concentrated around Malviya Nagar.",
+    "date": "2026-07-20 00:00:00"
   },
   {
     "doc_id": "INTEL-4009",
-    "classification": "CONFIDENTIAL",
-    "confidence": 0.64,
-    "text": "Source (reliability: B) reports M. Tiwari coordinating with Deepak Rao on logistics near Rajwada.",
-    "date": "2026-07-12 00:00:00"
+    "classification": "RESTRICTED",
+    "confidence": 0.51,
+    "text": "Intercept suggests Sanjay Mehta affiliated with Om Logistics; activity concentrated around Rajwada.",
+    "date": "2026-07-25 00:00:00"
   }
 ]
