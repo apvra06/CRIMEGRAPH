@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ health }) => {
           </div>
           <div>
             <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-              AI-Powered Criminal Network Analysis
+              CRIMEGRAPH 
             </h1>
             <p className="text-xs text-textMuted mt-0.5">
               Case <span className="text-tealAccent font-semibold font-mono">NCRB-2026-0847</span> — Fused FIR, CDR &amp; financial transaction intelligence
